@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 7%;
+}
+
+/* IMAGEM */
+
+.banner-background {
+    position: absolute;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    object-fit: cover;
+
+    z-index: 1;
+
+    transition: opacity 1s ease-in-out;
+}
+
+/* OVERLAY */
+
+.banner-overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background: #1e3b8a5d;
+
+    z-index: 2;
+}
+
+/* CONTEÚDO */
+
+.banner-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: 650px;
+    max-width: 100%;
+
+    color: white;
+
+    margin-top: 80px;
+}
+
+/* TÍTULO */
+
+.banner-content h1 {
+    font-size: 75px;
+
+    line-height: 85px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+}
+
+.banner-content span {
+    color: #FF7A00;
+}
+
+/* TEXTO */
+
+.banner-content p {
+    font-size: 21px;
+
+    line-height: 35px;
+
+    margin-bottom: 40px;
+
+    color: #E5E7EB;
+}
+
+/* BOTÕES */
+
+.banner-buttons {
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+/* BOTÃO LARANJA */
+
+.btn-orange {
+    width: 220px;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: linear-gradient(90deg, #FF7A00, #FF9A3D);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-orange:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 20px rgba(255, 122, 0, 0.35);
+}
+
+/* BOTÃO ESCURO */
+
+.btn-dark {
+    width: 260px;
+
+    height: 60px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    background-color: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-dark:hover {
+    background-color: rgba(255,255,255,0.15);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 1000px) {
+
+    .banner-content h1 {
+        font-size: 55px;
+
+        line-height: 65px;
+    }
+
+    .banner-content p {
+        font-size: 18px;
+
+        line-height: 30px;
+    }
+
+    .banner-buttons {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .banner {
+        padding: 0 5%;
+    }
+
+    .banner-content {
+        width: 100%;
+    }
+
+    .banner-content h1 {
+        font-size: 42px;
+
+        line-height: 52px;
+    }
+
+    .banner-content p {
+        font-size: 16px;
+    }
+
+    .btn-orange,
+    .btn-dark {
+        width: 100%;
+    }
+
+}
