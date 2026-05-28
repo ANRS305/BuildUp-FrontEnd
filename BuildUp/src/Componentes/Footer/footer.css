@@ -3,6 +3,7 @@
     background-color: #0F172A;
     color: white;
     padding-top: 80px;
+    font-family: 'Poppins', aria-label, sans-serif;
 }
 
 /* CONTAINER */
@@ -10,16 +11,18 @@
     width: 100%;
     max-width: 1400px;
     margin: auto;
-    padding: 0 7% 60px;
+    padding: 0 5% 60px;
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: 40px;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 /* BRAND */
 .footer-brand {
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
 }
 .footer-brand h2 {
     font-size: 40px;
@@ -105,24 +108,19 @@
 
 /* RESPONSIVO */
 @media (max-width: 900px) {
-
     .footer-container {
         flex-direction: column;
         gap: 50px;
     }
-
     .footer-brand {
         width: 100%;
     }
-
 }
 
 @media (max-width: 600px) {
-
     .footer-links {
         gap: 40px;
     }
-
     .footer-brand h2 {
         font-size: 32px;
     }

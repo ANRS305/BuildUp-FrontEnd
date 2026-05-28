@@ -6,13 +6,4 @@
         rgba(2, 12, 40, 0.85),
         rgba(2, 12, 40, 0.85)
     ),
-    url("../../assets/construcao.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 7%;
 }

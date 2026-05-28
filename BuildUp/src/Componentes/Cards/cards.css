@@ -1,10 +1,10 @@
 .cards {
     width: 100%;
-    padding: 90px 7%;
+    padding-block: 90px;
+    padding-inline: 7%;
     background-color: #F8FAFC;
 }
 
-/* HEADER */
 .cards-header {
     text-align: center;
     margin-bottom: 60px;
@@ -28,6 +28,7 @@
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
+    margin-bottom: 120px;
 }
 
 /* CARD */
@@ -81,9 +82,95 @@
     color: #2563EB;
 }
 
+/* BENEFÍCIOS */
+.benefits {
+    width: 100%;
+}
+
+.benefits-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.benefits-header h2 {
+    font-size: 40px;
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.benefits-header p {
+    font-size: 18px;
+    color: #64748B;
+}
+
+/* BENEFITS CONTAINER */
+.benefits-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* BENEFIT CARD */
+.benefit-card {
+    width: 340px;
+    background-color: white;
+    border-radius: 24px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+/* BENEFIT ICON */
+.benefit-icon {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    margin-bottom: 25px;
+    border-radius: 22px;
+    background-color: #EFF6FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: #2563EB;
+}
+
+/* BENEFIT TEXT */
+.benefit-card h3 {
+    font-size: 22px;
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    font-size: 16px;
+    line-height: 28px;
+    color: #64748B;
+}
+
+/* ANIMAÇÃO */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(60px);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
 /* RESPONSIVO */
 @media (max-width: 1200px) {
-
     .arrow {
         display: none;
     }
@@ -92,11 +179,13 @@
 
 @media (max-width: 700px) {
 
-    .cards-header h2 {
+    .cards-header h2,
+    .benefits-header h2 {
         font-size: 32px;
     }
 
-    .card {
+    .card,
+    .benefit-card {
         width: 100%;
     }
 
