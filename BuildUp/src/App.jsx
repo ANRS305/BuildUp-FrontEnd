@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Cadastrar from "./Pages/Cadastrar";
 import Login from "./Pages/Login";
+import Simulador from "./Pages/Obra";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           <Route
               path="/login"
               element={<Login />}
+          />
+          <Route
+              path="/Obra"
+              element={<Simulador />}
           />
       </Routes>
     </BrowserRouter>
