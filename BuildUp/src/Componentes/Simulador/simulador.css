@@ -1,0 +1,194 @@
+.simulador {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8FAFC;
+    padding: 150px 7% 100px;
+}
+
+/* HEADER */
+.simulador-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.simulador-header h1 {
+    font-size: 48px;
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.simulador-header p {
+    font-size: 18px;
+    color: #64748B;
+}
+
+/* CONTAINER */
+.simulador-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+/* FORM */
+.simulador-form {
+    background-color: white;
+    padding: 35px;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.simulador-form h2 {
+    margin-bottom: 30px;
+    color: #0F172A;
+}
+
+/* INPUT GROUP */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    margin-bottom: 10px;
+    color: #0F172A;
+    font-weight: 600;
+}
+
+.input-group input,
+.input-group select {
+    height: 55px;
+    border-radius: 14px;
+    border: 1px solid #D1D5DB;
+    padding: 0 18px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+}
+
+/* BOTÃO */
+.btn-calcular {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(
+        90deg,
+        #F97316,
+        #FF9A3D
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-calcular:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(249,115,22,0.25);
+}
+
+/* RESULTADO */
+.resultado {
+    background-color: white;
+    padding: 35px;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.resultado h2 {
+    margin-bottom: 30px;
+    color: #0F172A;
+}
+
+/* CARDS */
+.resultado-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resultado-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border-radius: 18px;
+    background-color: #F8FAFC;
+}
+
+.resultado-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    background-color: #EFF6FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #2563EB;
+}
+
+.resultado-card h3 {
+    color: #0F172A;
+    margin-bottom: 5px;
+}
+
+.resultado-card p {
+    color: #64748B;
+}
+
+.economia {
+    color: #16A34A !important;
+    font-weight: bold;
+}
+
+/* IA */
+.ia-box {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 22px;
+    background: linear-gradient(
+        135deg,
+        #0F172A,
+        #1E3A8A
+    );
+
+    display: flex;
+    gap: 18px;
+    color: white;
+}
+
+.ia-icon {
+    font-size: 35px;
+    color: #F97316;
+}
+
+.ia-box h3 {
+    margin-bottom: 8px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1000px) {
+    .simulador-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .simulador {
+        padding: 130px 5% 80px;
+    }
+
+    .simulador-header h1 {
+        font-size: 35px;
+    }
+}

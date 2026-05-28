@@ -1,5 +1,6 @@
 import "./Banner.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import bg1 from "../../assets/1.png";
 import bg2 from "../../assets/2.png";
 import bg3 from "../../assets/3.png";
@@ -10,6 +11,7 @@ export default function Banner() {
     const imagens = [bg1, bg2, bg3, bg4, bg5];
     const [imagemAtual, setImagemAtual] = useState(0);
     useEffect(() => {
+
         const interval = setInterval(() => {
 
             setImagemAtual((prev) =>
@@ -19,7 +21,6 @@ export default function Banner() {
         }, 4000);
         return () => clearInterval(interval);
     }, []);
-
     return (
         <section className="banner">
             {/* IMAGEM DE FUNDO */}
@@ -40,9 +41,14 @@ export default function Banner() {
                     da sua construção ou reforma.
                 </p>
                 <div className="banner-buttons">
-                    <button className="btn-orange">
+                    {/* BOTÃO SIMULADOR */}
+                    <Link
+                        to="/Obra"
+                        className="btn-orange"
+                    >
                         Simular minha obra
-                    </button>
+                    </Link>
+                    {/* BOTÃO PROFISSIONAIS */}
                     <button className="btn-dark">
                         Encontrar profissionais
                     </button>

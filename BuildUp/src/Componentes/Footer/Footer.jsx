@@ -1,5 +1,5 @@
 import "./Footer.css";
-
+import { Link } from "react-router-dom";
 import {
     FaInstagram,
     FaFacebookF,
@@ -7,9 +7,7 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-
     return (
-
         <footer className="footer">
             <div className="footer-container">
                 {/* LOGO / DESCRIÇÃO */}
@@ -39,10 +37,10 @@ export default function Footer() {
                 <div className="footer-links">
                     <div className="footer-column">
                         <h3>Plataforma</h3>
-                        <a href="#">Simulador</a>
-                        <a href="#">Profissionais</a>
-                        <a href="#">Empresas</a>
-                        <a href="#">Chat IA</a>
+                        <Link to="/Obra">Simulador</Link>
+                        <Link to="/profissionais">Profissionais</Link>
+                        <Link to="/empresas">Empresas</Link>
+                        <Link to="/chat-ia">Chat IA</Link>
                     </div>
                     <div className="footer-column">
                         <h3>Empresa</h3>

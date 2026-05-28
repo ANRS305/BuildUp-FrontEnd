@@ -83,6 +83,10 @@
     border: none;
     background: linear-gradient(90deg, #FF7A00, #FF9A3D);
     color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-orange:hover {
