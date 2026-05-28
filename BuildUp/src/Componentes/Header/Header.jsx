@@ -1,5 +1,5 @@
-import "./Header.css";
-
+import "./header.css";
+import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header className="header">
@@ -13,20 +13,24 @@ export default function Header() {
         </div>
         {/* MENU */}
         <nav className="menu">
-          <a href="#">Home</a>
-          <a href="#">Profissionais</a>
-          <a href="#">Empresas</a>
-          <a href="#">Simulador</a>
-          <a href="#">Chat IA</a>
+            <Link to="/">Home</Link>
+            <Link to="/profissionais">Profissionais</Link>
+            <Link to="/empresas">Empresas</Link>
+            <Link to="/simulador">Simulador</Link>
+            <Link to="/chat-ia">Chat IA</Link>
         </nav>
         {/* BOTÕES */}
         <div className="header-buttons">
           <button className="btn-login">
             Entrar
           </button>
-          <button className="btn-register">
-            Cadastrar
-          </button>
+          <Link to="/cadastrar">
+
+              <button className="btn-register">
+                  Cadastrar
+              </button>
+
+          </Link>
         </div>
       </div>
     </header>

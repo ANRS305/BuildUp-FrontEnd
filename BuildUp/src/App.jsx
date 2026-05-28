@@ -1,17 +1,29 @@
-import Header from "../src/Componentes/Header/Header";
-import Banner from "../src/Componentes/Banner/Banner";
-import Cards from "../src/Componentes/Cards/Cards";
-import Footer from "../src/Componentes/Footer/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import Cadastrar from "./Pages/Cadastrar";
 
 function App() {
 
   return (
-    <>
-      <Header />
-      <Banner />
-      <Cards />
-      <Footer />
-    </>
+
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route
+          path="/"
+          element={<Home />}
+        />
+
+        <Route
+          path="/cadastrar"
+          element={<Cadastrar />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 

@@ -1,16 +1,13 @@
 import Header from "../Componentes/Header/Header";
-import Banner from "../Componentes/Banner/Banner";
-import Cards from "../Componentes/Cards/Cards";
+import Cadastrar from "../Componentes/Cadastrar/Cadastro";
 import Footer from "../Componentes/Footer/Footer";
-import "../Componentes/Home/Home.css"; 
+import "../Componentes/Usuarios/usuarios.css";
 
 function Home() {
-
   return (
     <>
       <Header />
-      <Banner />
-      <Cards />
+      <Cadastrar />
       <Footer />
     </>
   );
