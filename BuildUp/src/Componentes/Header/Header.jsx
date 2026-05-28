@@ -21,15 +21,13 @@ export default function Header() {
         </nav>
         {/* BOTÕES */}
         <div className="header-buttons">
-          <button className="btn-login">
-            Entrar
-          </button>
+          <Link to="/login" className="btn-login">
+              Entrar
+          </Link>
           <Link to="/cadastrar">
-
               <button className="btn-register">
                   Cadastrar
               </button>
-
           </Link>
         </div>
       </div>
