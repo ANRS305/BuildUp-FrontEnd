@@ -1,7 +1,7 @@
-import Header from "../Componentes/Header/Header";
-import Cadastrar from "../Componentes/Cadastrar/Cadastro";
-import Footer from "../Componentes/Footer/Footer";
-import "../Componentes/Usuarios/usuarios.css";
+import Header from "../Components/Header/Header";
+import Cadastrar from "../Components/Header/Cadastrar/Cadastro";
+import Footer from "../Components/Footer/Footer";
+import "../Components/Usuarios/usuarios.css";
 
 function Home() {
   return (
