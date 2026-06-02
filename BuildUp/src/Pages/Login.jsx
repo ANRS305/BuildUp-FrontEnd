@@ -1,6 +1,6 @@
-import Header from "../Componentes/Header/Header";
-import Footer from "../Componentes/Footer/Footer";
-import Entrar from "../Componentes/Login/Entrar";
+import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
+import Entrar from "../Components/Login/Entrar";
 
 export default function Login() {
 
