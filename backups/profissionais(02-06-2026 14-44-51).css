@@ -57,15 +57,16 @@
 }
 
 .filtros select {
-    height: 55px;
+    height: 65px;
     border-radius: 14px;
     border: 1px solid #E5E7EB;
-    padding: 0 2px;
+    padding: 0 18px;
     background-color: white;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* CONTEÚDO */
+
 .conteudo-profissionais {
     display: grid;
     grid-template-columns: 260px 1fr;
