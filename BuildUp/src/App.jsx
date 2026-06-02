@@ -1,10 +1,9 @@
-import Header from "../src/Componentes/Header/Header";
-import Banner from "../src/Componentes/Banner/Banner";
-import Cards from "../src/Componentes/Cards/Cards";
-import Footer from "../src/Componentes/Footer/Footer";
+import Header from "../src/Components/Header/Header";
+import Banner from "../src/Components/Banner/Banner";
+import Cards from "../src/Components/Cards/Cards";
+import Footer from "../src/Components/Footer/Footer";
 
 function App() {
-
   return (
     <>
       <Header />
