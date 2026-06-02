@@ -8,29 +8,13 @@ import Profissionais from "./Pages/Profissionais";
 
 function App() {
   return (
-
     <BrowserRouter>
       <Routes>
-          <Route
-              path="/"
-              element={<Home />}
-          />
-          <Route
-              path="/cadastrar"
-              element={<Cadastrar />}
-          />
-          <Route
-              path="/login"
-              element={<Login />}
-          />
-          <Route
-              path="/Obra"
-              element={<Simulador />}
-          />
-          <Route
-              path="/Profissionais"
-              element={<Profissionais />}
-          />
+        <Route path="/" element={<Home />} />
+        <Route path="/cadastrar" element={<Cadastrar />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Obra" element={<Simulador />} />
+        <Route path="/Profissionais" element={<Profissionais />} />
       </Routes>
     </BrowserRouter>
   );
