@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Cadastrar from "./Pages/Cadastrar";
 import Login from "./Pages/Login";
 import Simulador from "./Pages/Obra";
+import Profissionais from "./Pages/Profissionais";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route
               path="/Obra"
               element={<Simulador />}
+          />
+          <Route
+              path="/Profissionais"
+              element={<Profissionais />}
           />
       </Routes>
     </BrowserRouter>

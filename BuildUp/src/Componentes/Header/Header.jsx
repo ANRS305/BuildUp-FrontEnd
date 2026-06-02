@@ -14,8 +14,7 @@ export default function Header() {
         {/* MENU */}
         <nav className="menu">
             <Link to="/">Home</Link>
-            <Link to="/profissionais">Profissionais</Link>
-            <Link to="/empresas">Empresas</Link>
+            <Link to="/Profissionais">Profissionais</Link>
             <Link to="/Obra">Simulador</Link>
             <Link to="/chat-ia">Chat IA</Link>
         </nav>

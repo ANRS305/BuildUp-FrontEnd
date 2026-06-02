@@ -39,7 +39,6 @@ export default function Footer() {
                         <h3>Plataforma</h3>
                         <Link to="/Obra">Simulador</Link>
                         <Link to="/profissionais">Profissionais</Link>
-                        <Link to="/empresas">Empresas</Link>
                         <Link to="/chat-ia">Chat IA</Link>
                     </div>
                     <div className="footer-column">
