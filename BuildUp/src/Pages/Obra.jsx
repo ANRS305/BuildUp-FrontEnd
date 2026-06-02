@@ -1,14 +1,13 @@
-import Header from "../Componentes/Header/Header";
-import Footer from "../Componentes/Footer/Footer";
-import Simulador from "../Componentes/Simulador/Simulador";
+import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
+import Simulador from "../Components/Simulador/Simulador";
 
 export default function Obra() {
-
-    return (
-        <>
-            <Header />
-            <Simulador />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Simulador />
+      <Footer />
+    </>
+  );
 }
