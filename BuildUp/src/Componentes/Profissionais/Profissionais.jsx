@@ -1,5 +1,5 @@
 import "./Profissionais.css";
-
+import { estados } from "./estados";
 import {
     HiOutlineMagnifyingGlass,
     HiOutlineMapPin
@@ -39,7 +39,13 @@ export default function Profissionais() {
                 </div>
 
                 <select>
-                    <option>São Paulo, SP</option>
+                    <option>Todos os estados</option>
+
+                    {estados.map((estado) => (
+                        <option key={estado} value={estado}>
+                            {estado}
+                        </option>
+                    ))}
                 </select>
 
                 <select>
