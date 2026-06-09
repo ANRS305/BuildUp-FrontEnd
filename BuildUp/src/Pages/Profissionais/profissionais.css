@@ -212,6 +212,14 @@
     color: white;
 }
 
+.profissional-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2563EB;
+}
+
 /* RESPONSIVO */
 @media (max-width: 1100px) {
     .conteudo-profissionais {
