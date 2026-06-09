@@ -18,7 +18,8 @@ export default function Profissionais() {
             nome: "João Silva",
             profissao: "Pedreiro",
             avaliacao: 4.9,
-            cidade: "São Paulo, SP",
+            cidade: "São Paulo",
+            estado: "SP",
             preco: "R$ 180/dia",
             img: "https://placehold.co/100x100"
         },
@@ -27,8 +28,9 @@ export default function Profissionais() {
             nome: "Carlos Mendes",
             profissao: "Eletricista",
             avaliacao: 4.8,
-            cidade: "São Paulo, SP",
-            preco: "R$ 150/dia",
+            cidade: "Rio de Janeiro",
+            estado: "RJ",
+            preco: "R$ 160/dia",
             img: "https://placehold.co/100x100"
         },
         {
@@ -36,7 +38,8 @@ export default function Profissionais() {
             nome: "Rafael Souza",
             profissao: "Pintor",
             avaliacao: 4.7,
-            cidade: "Campinas, SP",
+            cidade: "Belo Horizonte",
+            estado: "MG",
             preco: "R$ 140/dia",
             img: "https://placehold.co/100x100"
         },
@@ -45,8 +48,9 @@ export default function Profissionais() {
             nome: "Bruno Almeida",
             profissao: "Encanador",
             avaliacao: 4.6,
-            cidade: "Sorocaba, SP",
-            preco: "R$ 160/dia",
+            cidade: "Curitiba",
+            estado: "PR",
+            preco: "R$ 170/dia",
             img: "https://placehold.co/100x100"
         },
         {
@@ -54,7 +58,8 @@ export default function Profissionais() {
             nome: "Lucas Ferreira",
             profissao: "Carpinteiro",
             avaliacao: 4.9,
-            cidade: "Bauru, SP",
+            cidade: "Salvador",
+            estado: "BA",
             preco: "R$ 200/dia",
             img: "https://placehold.co/100x100"
         },
@@ -63,8 +68,9 @@ export default function Profissionais() {
             nome: "Pedro Henrique",
             profissao: "Pedreiro",
             avaliacao: 4.5,
-            cidade: "Limeira, SP",
-            preco: "R$ 170/dia",
+            cidade: "Fortaleza",
+            estado: "CE",
+            preco: "R$ 155/dia",
             img: "https://placehold.co/100x100"
         },
         {
@@ -72,8 +78,9 @@ export default function Profissionais() {
             nome: "Gabriel Lima",
             profissao: "Eletricista",
             avaliacao: 4.8,
-            cidade: "Rio Claro, SP",
-            preco: "R$ 155/dia",
+            cidade: "Manaus",
+            estado: "AM",
+            preco: "R$ 150/dia",
             img: "https://placehold.co/100x100"
         },
         {
@@ -81,7 +88,8 @@ export default function Profissionais() {
             nome: "Thiago Santos",
             profissao: "Pintor",
             avaliacao: 4.4,
-            cidade: "Jundiaí, SP",
+            cidade: "Porto Alegre",
+            estado: "RS",
             preco: "R$ 130/dia",
             img: "https://placehold.co/100x100"
         },
@@ -90,7 +98,8 @@ export default function Profissionais() {
             nome: "André Costa",
             profissao: "Encanador",
             avaliacao: 4.7,
-            cidade: "Piracicaba, SP",
+            cidade: "Recife",
+            estado: "PE",
             preco: "R$ 165/dia",
             img: "https://placehold.co/100x100"
         },
@@ -99,7 +108,8 @@ export default function Profissionais() {
             nome: "Marcos Vinícius",
             profissao: "Carpinteiro",
             avaliacao: 4.6,
-            cidade: "Araraquara, SP",
+            cidade: "Goiânia",
+            estado: "GO",
             preco: "R$ 210/dia",
             img: "https://placehold.co/100x100"
         }
@@ -107,16 +117,15 @@ export default function Profissionais() {
     const filtrados = profissionais.filter((p) => {
         const matchCategoria =
             categoria === "Todos" || p.profissao === categoria;
-
         const matchBusca =
             p.nome.toLowerCase().includes(busca.toLowerCase());
-
         const matchEstado =
             estadoSelecionado === "Todos" ||
-            p.cidade.includes(estadoSelecionado);
+            p.estado === estadoSelecionado;
 
         return matchCategoria && matchBusca && matchEstado;
     });
+
     return (
         <>
             <Header />
@@ -128,7 +137,6 @@ export default function Profissionais() {
                 </div>
                 {/* FILTROS */}
                 <div className="filtros">
-                    {/* BUSCA */}
                     <div className="pesquisa">
                         <HiOutlineMagnifyingGlass />
                         <input
@@ -138,7 +146,7 @@ export default function Profissionais() {
                             onChange={(e) => setBusca(e.target.value)}
                         />
                     </div>
-                    {/* ESTADOS */}
+                    {/* SELECT DE ESTADOS (SIGLAS) */}
                     <select
                         value={estadoSelecionado}
                         onChange={(e) =>
@@ -177,10 +185,7 @@ export default function Profissionais() {
                     {/* LISTA */}
                     <div className="lista-profissionais">
                         {filtrados.map((p) => (
-                            <div
-                                key={p.id}
-                                className="profissional-card"
-                            >
+                            <div key={p.id} className="profissional-card">
                                 <img src={p.img} alt={p.nome} />
                                 <div className="profissional-info">
                                     <h2>{p.nome}</h2>
@@ -190,7 +195,7 @@ export default function Profissionais() {
                                     </span>
                                     <div className="localizacao">
                                         <HiOutlineMapPin />
-                                        {p.cidade}
+                                        {p.cidade} - {p.estado}
                                     </div>
                                 </div>
                                 <div className="profissional-preco">
