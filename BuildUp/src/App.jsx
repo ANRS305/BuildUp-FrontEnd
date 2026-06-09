@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./Pages/Home";
-import Cadastrar from "./Pages/Cadastrar";
-import Login from "./Pages/Login";
-import Simulador from "./Pages/Obra";
-import Profissionais from "./Pages/Profissionais";
+import Home from "./Pages/Home/Home";
+import Cadastrar from "./Pages/Cadastrar/Cadastrar";
+import Login from "./Pages/Login/Entrar";
+import Simulador from "./Pages/Simulador/Simulador";
+import Profissionais from "./Pages/Profissionais/Profissionais";
 
 function App() {
   return (
