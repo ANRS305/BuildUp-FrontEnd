@@ -1,4 +1,6 @@
 import "./entrar.css";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
 import {
     AiOutlineEye,
@@ -8,7 +10,8 @@ import {
 export default function Entrar() {
     const [mostrarSenha, setMostrarSenha] = useState(false);
     return (
-
+        <>
+        <Header />
         <section className="login">
             <div className="login-card">
                 <h1>
@@ -68,5 +71,7 @@ export default function Entrar() {
                 </form>
             </div>
         </section>
+        <Footer />
+        </>
     );
 }

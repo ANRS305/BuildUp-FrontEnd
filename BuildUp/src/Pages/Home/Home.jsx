@@ -1,8 +1,8 @@
-import Header from "../Components/Header/Header";
-import Banner from "../Components/Banner/Banner";
-import Cards from "../Components/Cards/Cards";
-import Footer from "../Components/Footer/Footer";
-import "../Components/Home/Home.css"; 
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import Cards from "../../Components/Cards/Cards";
+import Banner from "./Banner/Banner";
+import "./home.css";
 
 function Home() {
 

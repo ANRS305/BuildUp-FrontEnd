@@ -1,4 +1,7 @@
 import "./Profissionais.css";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import { useState } from "react";
 import { estados } from "./estados";
 import {
     HiOutlineMagnifyingGlass,
@@ -6,167 +9,200 @@ import {
 } from "react-icons/hi2";
 
 export default function Profissionais() {
+    const [categoria, setCategoria] = useState("Todos");
+    const [busca, setBusca] = useState("");
+    const [estadoSelecionado, setEstadoSelecionado] = useState("Todos");
+    const profissionais = [
+        {
+            id: 1,
+            nome: "João Silva",
+            profissao: "Pedreiro",
+            avaliacao: 4.9,
+            cidade: "São Paulo, SP",
+            preco: "R$ 180/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 2,
+            nome: "Carlos Mendes",
+            profissao: "Eletricista",
+            avaliacao: 4.8,
+            cidade: "São Paulo, SP",
+            preco: "R$ 150/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 3,
+            nome: "Rafael Souza",
+            profissao: "Pintor",
+            avaliacao: 4.7,
+            cidade: "Campinas, SP",
+            preco: "R$ 140/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 4,
+            nome: "Bruno Almeida",
+            profissao: "Encanador",
+            avaliacao: 4.6,
+            cidade: "Sorocaba, SP",
+            preco: "R$ 160/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 5,
+            nome: "Lucas Ferreira",
+            profissao: "Carpinteiro",
+            avaliacao: 4.9,
+            cidade: "Bauru, SP",
+            preco: "R$ 200/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 6,
+            nome: "Pedro Henrique",
+            profissao: "Pedreiro",
+            avaliacao: 4.5,
+            cidade: "Limeira, SP",
+            preco: "R$ 170/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 7,
+            nome: "Gabriel Lima",
+            profissao: "Eletricista",
+            avaliacao: 4.8,
+            cidade: "Rio Claro, SP",
+            preco: "R$ 155/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 8,
+            nome: "Thiago Santos",
+            profissao: "Pintor",
+            avaliacao: 4.4,
+            cidade: "Jundiaí, SP",
+            preco: "R$ 130/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 9,
+            nome: "André Costa",
+            profissao: "Encanador",
+            avaliacao: 4.7,
+            cidade: "Piracicaba, SP",
+            preco: "R$ 165/dia",
+            img: "https://placehold.co/100x100"
+        },
+        {
+            id: 10,
+            nome: "Marcos Vinícius",
+            profissao: "Carpinteiro",
+            avaliacao: 4.6,
+            cidade: "Araraquara, SP",
+            preco: "R$ 210/dia",
+            img: "https://placehold.co/100x100"
+        }
+    ];
+    const filtrados = profissionais.filter((p) => {
+        const matchCategoria =
+            categoria === "Todos" || p.profissao === categoria;
+
+        const matchBusca =
+            p.nome.toLowerCase().includes(busca.toLowerCase());
+
+        const matchEstado =
+            estadoSelecionado === "Todos" ||
+            p.cidade.includes(estadoSelecionado);
+
+        return matchCategoria && matchBusca && matchEstado;
+    });
     return (
-        <section className="profissionais">
-            <div className="profissionais-header">
-                <h1>
-                    Encontre o profissional ideal
-                </h1>
-                <p>
-                    Compare avaliações, preços e especialidades.
-                </p>
-            </div>
-
-            {/* FILTROS */}
-
-            <div className="filtros">
-
-                <div className="pesquisa">
-
-                    <HiOutlineMagnifyingGlass />
-
-                    <input
-                        type="text"
-                        placeholder="Buscar profissional..."
-                    />
-
+        <>
+            <Header />
+            <section className="profissionais">
+                {/* HEADER */}
+                <div className="profissionais-header">
+                    <h1>Encontre o profissional ideal</h1>
+                    <p>Compare avaliações, preços e especialidades.</p>
                 </div>
-
-                <select>
-                    <option>Todos os estados</option>
-
-                    {estados.map((estado) => (
-                        <option key={estado} value={estado}>
-                            {estado}
-                        </option>
-                    ))}
-                </select>
-
-                <select>
-                    <option>Todas as especialidades</option>
-                    <option>Pedreiro</option>
-                    <option>Eletricista</option>
-                    <option>Pintor</option>
-                </select>
-
-            </div>
-
-            <div className="conteudo-profissionais">
-
-                {/* CATEGORIAS */}
-
-                <aside className="categorias">
-
-                    <h3>Categorias</h3>
-
-                    <button>Todos</button>
-                    <button>Pedreiro</button>
-                    <button>Pintor</button>
-                    <button>Eletricista</button>
-                    <button>Encanador</button>
-                    <button>Carpinteiro</button>
-
-                </aside>
-
-                {/* LISTA */}
-
-                <div className="lista-profissionais">
-
-                    <div className="profissional-card">
-
-                        <img
-                            src="https://placehold.co/100x100"
-                            alt=""
+                {/* FILTROS */}
+                <div className="filtros">
+                    {/* BUSCA */}
+                    <div className="pesquisa">
+                        <HiOutlineMagnifyingGlass />
+                        <input
+                            type="text"
+                            placeholder="Buscar profissional..."
+                            value={busca}
+                            onChange={(e) => setBusca(e.target.value)}
                         />
-
-                        <div className="profissional-info">
-
-                            <h2>
-                                João Silva
-                            </h2>
-
-                            <p>
-                                Pedreiro
-                            </p>
-
-                            <span>
-                                ⭐ 4.9 (128 avaliações)
-                            </span>
-
-                            <div className="localizacao">
-
-                                <HiOutlineMapPin />
-
-                                São Paulo, SP
-
-                            </div>
-
-                        </div>
-
-                        <div className="profissional-preco">
-
-                            <h3>
-                                R$ 180/dia
-                            </h3>
-
-                            <button>
-                                Ver perfil
-                            </button>
-
-                        </div>
-
                     </div>
-
-                    <div className="profissional-card">
-
-                        <img
-                            src="https://placehold.co/100x100"
-                            alt=""
-                        />
-
-                        <div className="profissional-info">
-
-                            <h2>
-                                Carlos Mendes
-                            </h2>
-
-                            <p>
-                                Eletricista
-                            </p>
-
-                            <span>
-                                ⭐ 4.8 (96 avaliações)
-                            </span>
-
-                            <div className="localizacao">
-
-                                <HiOutlineMapPin />
-
-                                São Paulo, SP
-
-                            </div>
-
-                        </div>
-
-                        <div className="profissional-preco">
-
-                            <h3>
-                                R$ 150/dia
-                            </h3>
-
-                            <button>
-                                Ver perfil
-                            </button>
-
-                        </div>
-
-                    </div>
-
+                    {/* ESTADOS */}
+                    <select
+                        value={estadoSelecionado}
+                        onChange={(e) =>
+                            setEstadoSelecionado(e.target.value)
+                        }
+                    >
+                        <option value="Todos">Todos os estados</option>
+                        {estados.map((estado) => (
+                            <option key={estado} value={estado}>
+                                {estado}
+                            </option>
+                        ))}
+                    </select>
                 </div>
-
-            </div>
-
-        </section>
-
+                <div className="conteudo-profissionais">
+                    {/* CATEGORIAS */}
+                    <aside className="categorias">
+                        <h3>Categorias</h3>
+                        {[
+                            "Todos",
+                            "Pedreiro",
+                            "Pintor",
+                            "Eletricista",
+                            "Encanador",
+                            "Carpinteiro"
+                        ].map((item) => (
+                            <button
+                                key={item}
+                                className={categoria === item ? "active" : ""}
+                                onClick={() => setCategoria(item)}
+                            >
+                                {item}
+                            </button>
+                        ))}
+                    </aside>
+                    {/* LISTA */}
+                    <div className="lista-profissionais">
+                        {filtrados.map((p) => (
+                            <div
+                                key={p.id}
+                                className="profissional-card"
+                            >
+                                <img src={p.img} alt={p.nome} />
+                                <div className="profissional-info">
+                                    <h2>{p.nome}</h2>
+                                    <p>{p.profissao}</p>
+                                    <span>
+                                        ⭐ {p.avaliacao} (128 avaliações)
+                                    </span>
+                                    <div className="localizacao">
+                                        <HiOutlineMapPin />
+                                        {p.cidade}
+                                    </div>
+                                </div>
+                                <div className="profissional-preco">
+                                    <h3>{p.preco}</h3>
+                                    <button>Contratar</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            <Footer />
+        </>
     );
 }
