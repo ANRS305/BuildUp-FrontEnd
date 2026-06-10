@@ -1,152 +1,181 @@
-import "./simulador.css";
-import {
-    HiOutlineHome,
-    HiOutlineCube,
-    HiOutlineCurrencyDollar,
-    HiOutlineSparkles
-} from "react-icons/hi2";
+import "../Simulador/simulador.css";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Simulador() {
+    const [tipoObra, setTipoObra] = useState("");
+    const [area, setArea] = useState("");
+    const [quartos, setQuartos] = useState("");
+    const [banheiros, setBanheiros] = useState("");
+    const [resultado, setResultado] = useState(null);
+    function calcular() {
+        if (
+            !tipoObra ||
+            !area ||
+            !quartos ||
+            !banheiros
+        ) {
+            alert("Preencha todos os campos.");
+            return;
+        }
+        const areaNum = Number(area);
+        const tijolos = areaNum * 100;
+        const cimento = Math.round(areaNum * 0.5);
+        const areia = Math.round(areaNum * 0.15);
+        const materiais = areaNum * 400;
+        const maoDeObra = areaNum * 180;
+        const total = materiais + maoDeObra;
+        setResultado({
+            tijolos,
+            cimento,
+            areia,
+            materiais,
+            maoDeObra,
+            total,
+            economia: Math.round(total * 0.1)
+        });
+    }
     return (
-        <section className="simulador">
-            {/* TÍTULO */}
-            <div className="simulador-header">
-                <h1>
-                    Simulador de Obras
-                </h1>
-                <p>
-                    Calcule materiais, custos e economize
-                    no planejamento da sua construção.
-                </p>
-            </div>
-            {/* CONTAINER */}
-            <div className="simulador-container">
-                {/* FORMULÁRIO */}
-                <div className="simulador-form">
-                    <h2>
-                        Informações da obra
-                    </h2>
-                    {/* TIPO */}
-                    <div className="input-group">
-                        <label>
-                            Tipo de obra
-                        </label>
-                        <select>
-                            <option>
+        <>
+            <Header />
+            <section className="simulador">
+                <div className="simulador-header">
+                    <h1>Simulador de Obras</h1>
+                    <p>
+                        Calcule materiais, custos e economize
+                        no planejamento da sua construção.
+                    </p>
+                </div>
+                <div className="simulador-grid">
+                    {/* ESQUERDA */}
+                    <div className="form-card">
+                        <h2>Informações da obra</h2>
+                        <label>Tipo de obra</label>
+                        <select
+                            value={tipoObra}
+                            onChange={(e) =>
+                                setTipoObra(e.target.value)
+                            }>
+                            <option value="">
+                                Selecione o tipo da obra
+                            </option>
+                            <option value="Casa térrea">
                                 Casa térrea
                             </option>
-                            <option>
+                            <option value="Sobrado">
                                 Sobrado
                             </option>
-                            <option>
-                                Reforma
+                            <option value="Comercial">
+                                Comercial
                             </option>
                         </select>
-                    </div>
-                    {/* ÁREA */}
-                    <div className="input-group">
-                        <label>
-                            Área total (m²)
-                        </label>
+                        <label>Área total (m²)</label>
                         <input
                             type="number"
-                            placeholder="120"
-                        />
-
-                    </div>
-                    {/* QUARTOS */}
-                    <div className="input-group">
-                        <label>
-                            Quantos quartos?
-                        </label>
+                            placeholder="Ex: 120"
+                            value={area}
+                            onChange={(e) =>
+                                setArea(e.target.value)
+                            }/>
+                        <label>Quantos quartos?</label>
                         <input
                             type="number"
-                            placeholder="3"
-                        />
-
-                    </div>
-                    {/* BANHEIROS */}
-                    <div className="input-group">
-                        <label>
-                            Quantos banheiros?
-                        </label>
+                            placeholder="Ex: 3"
+                            value={quartos}
+                            onChange={(e) =>
+                                setQuartos(e.target.value)
+                            }/>
+                        <label>Quantos banheiros?</label>
                         <input
                             type="number"
-                            placeholder="2"
-                        />
+                            placeholder="Ex: 2"
+                            value={banheiros}
+                            onChange={(e) =>
+                                setBanheiros(e.target.value)
+                            }/>
+                        <button
+                            className="btn-calcular"
+                            onClick={calcular}>
+                            Calcular estimativa
+                        </button>
                     </div>
-                    {/* BOTÃO */}
-                    <button className="btn-calcular">
-
-                        Calcular estimativa
-                    </button>
+                    {/* DIREITA */}
+                    <div className="resultado-card">
+                        <h2>Resumo da estimativa</h2>
+                        {resultado ? (
+                            <>
+                                <div className="info-box">
+                                    <h3>Tijolos</h3>
+                                    <p>
+                                        {resultado.tijolos.toLocaleString()}
+                                        {" "}unidades
+                                    </p>
+                                </div>
+                                <div className="info-box">
+                                    <h3>Cimento</h3>
+                                    <p>
+                                        {resultado.cimento} sacos
+                                    </p>
+                                </div>
+                                <div className="info-box">
+                                    <h3>Areia</h3>
+                                    <p>
+                                        {resultado.areia} m³
+                                    </p>
+                                </div>
+                                <div className="info-box">
+                                    <h3>Materiais</h3>
+                                    <p>
+                                        {resultado.materiais.toLocaleString(
+                                            "pt-BR",
+                                            {
+                                                style: "currency",
+                                                currency: "BRL"
+                                            }
+                                        )}
+                                    </p>
+                                </div>
+                                <div className="info-box">
+                                    <h3>Mão de obra</h3>
+                                    <p>
+                                        {resultado.maoDeObra.toLocaleString(
+                                            "pt-BR",
+                                            {
+                                                style: "currency",
+                                                currency: "BRL"
+                                            }
+                                        )}
+                                    </p>
+                                </div>
+                                <div className="info-box destaque">
+                                    <h3>Total estimado</h3>
+                                    <p>
+                                        {resultado.total.toLocaleString(
+                                            "pt-BR",
+                                            {
+                                                style: "currency",
+                                                currency: "BRL"
+                                            }
+                                        )}
+                                    </p>
+                                </div>
+                                <Link to="/profissionais" className="btn-profissionais">
+                                    Encontrar profissionais para esta obra
+                                </Link>
+                            </>
+                        ) : (
+                            <div className="vazio">
+                                Preencha as informações da obra para
+                                visualizar a estimativa de materiais
+                                e custos.
+                            </div>
+                        )}
+                    </div>
                 </div>
-                {/* RESULTADO */}
-                <div className="resultado">
-                    <h2>
-                        Resumo da estimativa
-                    </h2>
-                    <div className="resultado-cards">
-                        {/* CARD */}
-                        <div className="resultado-card">
-                            <div className="resultado-icon">
-                                <HiOutlineCube />
-                            </div>
-                            <div>
-                                <h3>
-                                    Tijolos
-                                </h3>
-                                <p>
-                                    12.000 unidades
-                                </p>
-                            </div>
-                        </div>
-                        {/* CARD */}
-                        <div className="resultado-card">
-                            <div className="resultado-icon">
-                                <HiOutlineHome />
-                            </div>
-                            <div>
-                                <h3>
-                                    Cimento
-                                </h3>
-                                <p>
-                                    60 sacos
-                                </p>
-                            </div>
-                        </div>
-                        {/* CARD */}
-                        <div className="resultado-card">
-                            <div className="resultado-icon">
-                                <HiOutlineCurrencyDollar />
-                            </div>
-                            <div>
-                                <h3>
-                                    Economia
-                                </h3>
-                                <p className="economia">
-                                    R$ 4.850,00
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    {/* IA */}
-                    <div className="ia-box">
-                        <div className="ia-icon">
-                            <HiOutlineSparkles />
-                        </div>
-                        <div>
-                            <h3>
-                                Dica da IA
-                            </h3>
-                            <p>
-                                Comprando materiais em maior quantidade
-                                você pode economizar até 14%.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+            <Footer />
+        </>
     );
 }

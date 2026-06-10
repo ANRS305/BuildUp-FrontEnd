@@ -16,7 +16,7 @@ export default function Header() {
           <Link to="/">Home</Link>
           <Link to="/Profissionais">Profissionais</Link>
           <Link to="/Obra">Simulador</Link>
-          <Link to="/chat-ia">Chat IA</Link>
+          <Link to="/ChatIA">Chat IA</Link>
         </nav>
         {/* BOTÕES */}
         <div className="header-buttons">

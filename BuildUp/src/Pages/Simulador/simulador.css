@@ -1,194 +1,136 @@
 .simulador {
-    width: 100%;
     min-height: 100vh;
-    background-color: #F8FAFC;
-    padding: 150px 7% 100px;
+    padding: 140px 7% 80px;
+    background: #f8fafc;
 }
 
-/* HEADER */
 .simulador-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .simulador-header h1 {
-    font-size: 48px;
-    color: #0F172A;
-    margin-bottom: 15px;
+    font-size: 52px;
+    color: #0f172a;
 }
 
 .simulador-header p {
+    color: #64748b;
     font-size: 18px;
-    color: #64748B;
 }
-
-/* CONTAINER */
-.simulador-container {
+.simulador-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 35px;
+    gap: 30px;
+    align-items: start;
 }
 
-/* FORM */
-.simulador-form {
-    background-color: white;
+.form-card,
+.resultado-card {
+    background: white;
+    border-radius: 25px;
     padding: 35px;
-    border-radius: 28px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.simulador-form h2 {
-    margin-bottom: 30px;
-    color: #0F172A;
-}
-
-/* INPUT GROUP */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 22px;
-}
-
-.input-group label {
-    margin-bottom: 10px;
-    color: #0F172A;
-    font-weight: 600;
-}
-
-.input-group input,
-.input-group select {
-    height: 55px;
-    border-radius: 14px;
-    border: 1px solid #D1D5DB;
-    padding: 0 18px;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.input-group input:focus,
-.input-group select:focus {
-    border-color: #2563EB;
-    box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
-}
-
-/* BOTÃO */
-.btn-calcular {
-    width: 100%;
-    height: 58px;
-    border: none;
-    border-radius: 16px;
-    background: linear-gradient(
-        90deg,
-        #F97316,
-        #FF9A3D
-    );
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-calcular:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(249,115,22,0.25);
-}
-
-/* RESULTADO */
-.resultado {
-    background-color: white;
-    padding: 35px;
-    border-radius: 28px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.resultado h2 {
-    margin-bottom: 30px;
-    color: #0F172A;
-}
-
-/* CARDS */
-.resultado-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
 }
 
 .resultado-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 20px;
-    border-radius: 18px;
-    background-color: #F8FAFC;
+    height: fit-content;
+}
+.form-card h2,
+.resultado-card h2 {
+    margin-bottom: 25px;
+    color: #0f172a;
 }
 
-.resultado-icon {
-    width: 60px;
-    height: 60px;
+.form-card label {
+    display: block;
+    margin: 18px 0 8px;
+    font-weight: 600;
+}
+
+.form-card input,
+.form-card select {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+.btn-calcular {
+    width: 100%;
+    margin-top: 30px;
+    height: 55px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        #f97316,
+        #ff9a3d
+    );
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.info-box {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.info-box h3 {
+    color: #0f172a;
+}
+
+.info-box p {
+    color: #64748b;
+}
+
+.destaque {
+    background: #eff6ff;
+    border: 2px solid #2563eb;
+}
+
+.ia-card {
+    margin-top: 20px;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
+    color: white;
+    padding: 20px;
     border-radius: 18px;
-    background-color: #EFF6FF;
+}
+
+.vazio {
+    color: #64748b;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.btn-profissionais {
+    width: 100%;
+    height: 55px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 14px;
+    background: #2563EB;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    color: #2563EB;
+    text-decoration: none;
 }
 
-.resultado-card h3 {
-    color: #0F172A;
-    margin-bottom: 5px;
-}
-
-.resultado-card p {
-    color: #64748B;
-}
-
-.economia {
-    color: #16A34A !important;
-    font-weight: bold;
-}
-
-/* IA */
-.ia-box {
-    margin-top: 35px;
-    padding: 25px;
-    border-radius: 22px;
-    background: linear-gradient(
-        135deg,
-        #0F172A,
-        #1E3A8A
-    );
-
-    display: flex;
-    gap: 18px;
-    color: white;
-}
-
-.ia-icon {
-    font-size: 35px;
-    color: #F97316;
-}
-
-.ia-box h3 {
-    margin-bottom: 8px;
-}
-
-/* RESPONSIVO */
 @media (max-width: 1000px) {
-    .simulador-container {
+    .simulador-grid {
         grid-template-columns: 1fr;
-    }
-
-}
-
-@media (max-width: 700px) {
-    .simulador {
-        padding: 130px 5% 80px;
-    }
-
-    .simulador-header h1 {
-        font-size: 35px;
     }
 }

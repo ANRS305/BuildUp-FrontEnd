@@ -42,16 +42,13 @@ export default function Banner() {
                 </p>
                 <div className="banner-buttons">
                     {/* BOTÃO SIMULADOR */}
-                    <Link
-                        to="/Obra"
-                        className="btn-orange"
-                    >
+                    <Link to="/Obra" className="btn-orange">
                         Simular minha obra
                     </Link>
                     {/* BOTÃO PROFISSIONAIS */}
-                    <button className="btn-dark">
+                    <Link to="/profissionais" className="btn-dark">
                         Encontrar profissionais
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
