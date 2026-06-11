@@ -48,7 +48,7 @@ export default function Footer() {
                         <a href="#">Suporte</a>
                     </div>
                     <div className="footer-column">
-                        <h3>Legal</h3>
+                        <h3>Termos</h3>
                         <a href="#">Termos de uso</a>
                         <a href="#">Privacidade</a>
                     </div>
