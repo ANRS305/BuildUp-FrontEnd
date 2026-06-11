@@ -3,8 +3,10 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Simulador() {
+    const navigate = useNavigate();
     const [tipoObra, setTipoObra] = useState("");
     const [area, setArea] = useState("");
     const [quartos, setQuartos] = useState("");
@@ -24,6 +26,7 @@ export default function Simulador() {
         const tijolos = areaNum * 100;
         const cimento = Math.round(areaNum * 0.5);
         const areia = Math.round(areaNum * 0.15);
+        const tinta = Math.round(areaNum * 0.2);
         const materiais = areaNum * 400;
         const maoDeObra = areaNum * 180;
         const total = materiais + maoDeObra;
@@ -31,6 +34,7 @@ export default function Simulador() {
             tijolos,
             cimento,
             areia,
+            tinta,
             materiais,
             maoDeObra,
             total,
@@ -50,56 +54,86 @@ export default function Simulador() {
                 </div>
                 <div className="simulador-grid">
                     {/* ESQUERDA */}
-                    <div className="form-card">
-                        <h2>Informações da obra</h2>
-                        <label>Tipo de obra</label>
-                        <select
-                            value={tipoObra}
-                            onChange={(e) =>
-                                setTipoObra(e.target.value)
-                            }>
-                            <option value="">
-                                Selecione o tipo da obra
-                            </option>
-                            <option value="Casa térrea">
-                                Casa térrea
-                            </option>
-                            <option value="Sobrado">
-                                Sobrado
-                            </option>
-                            <option value="Comercial">
-                                Comercial
-                            </option>
-                        </select>
-                        <label>Área total (m²)</label>
-                        <input
-                            type="number"
-                            placeholder="Ex: 120"
-                            value={area}
-                            onChange={(e) =>
-                                setArea(e.target.value)
-                            }/>
-                        <label>Quantos quartos?</label>
-                        <input
-                            type="number"
-                            placeholder="Ex: 3"
-                            value={quartos}
-                            onChange={(e) =>
-                                setQuartos(e.target.value)
-                            }/>
-                        <label>Quantos banheiros?</label>
-                        <input
-                            type="number"
-                            placeholder="Ex: 2"
-                            value={banheiros}
-                            onChange={(e) =>
-                                setBanheiros(e.target.value)
-                            }/>
-                        <button
-                            className="btn-calcular"
-                            onClick={calcular}>
-                            Calcular estimativa
-                        </button>
+                    <div className="coluna-esquerda">
+                        <div className="form-card">
+                            <h2>Informações da obra</h2>
+                            <label>Tipo de obra</label>
+                            <select
+                                value={tipoObra}
+                                onChange={(e) =>
+                                    setTipoObra(e.target.value)
+                                }>
+                                <option value="">
+                                    Selecione o tipo da obra
+                                </option>
+                                <option value="Casa">
+                                    Casa
+                                </option>
+                                <option value="Apartamento">
+                                    Apartamento
+                                </option>
+                                <option value="Hotel">
+                                    Hotel
+                                </option>
+                                <option value="Escritório">
+                                    Escritório
+                                </option>
+                                <option value="Comercial">
+                                    Comercial
+                                </option>
+                                <option value="Chácara">
+                                    Chácara
+                                </option>
+                                <option value="Área de lazer">
+                                    Área de lazer
+                                </option>
+                            </select>
+                            <label>Área total (m²)</label>
+                            <input
+                                type="number"
+                                placeholder="Ex: 120"
+                                value={area}
+                                onChange={(e) =>
+                                    setArea(e.target.value)
+                                }/>
+                            <label>Quantos quartos?</label>
+                            <input
+                                type="number"
+                                placeholder="Ex: 3"
+                                value={quartos}
+                                onChange={(e) =>
+                                    setQuartos(e.target.value)
+                                }/>
+                            <label>Quantos banheiros?</label>
+                            <input
+                                type="number"
+                                placeholder="Ex: 2"
+                                value={banheiros}
+                                onChange={(e) =>
+                                    setBanheiros(e.target.value)
+                                }/>
+                            <button
+                                className="btn-calcular"
+                                onClick={calcular}>
+                                Calcular estimativa
+                            </button>
+                        </div>
+                        {resultado && (
+                            <div className="chat-ajuda-card">
+                                <h3>Precisa de mais detalhes?</h3>
+                                <p>
+                                    Para mais informações sobre materiais ou tirar dúvidas, 
+                                    consulte o Chat BuildUp IA.
+                                </p>
+
+                                <button
+                                    className="btn-chat-ia"
+                                    onClick={() => navigate("/chatia")}
+                                >
+                                    Abrir Chat IA
+                                </button>
+                            </div>
+                        )}
                     </div>
                     {/* DIREITA */}
                     <div className="resultado-card">
@@ -123,6 +157,12 @@ export default function Simulador() {
                                     <h3>Areia</h3>
                                     <p>
                                         {resultado.areia} m³
+                                    </p>
+                                </div>
+                                <div className="info-box">
+                                    <h3>Tinta Acabamento</h3>
+                                    <p>
+                                        {resultado.tinta} litros
                                     </p>
                                 </div>
                                 <div className="info-box">
