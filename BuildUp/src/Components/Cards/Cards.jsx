@@ -48,7 +48,7 @@ export default function Cards() {
                         </h3>
                         <p>
                             Informe as medidas, tipo de obra
-                            e materiais desejados.
+                            e quantidade de quartos...
                         </p>
                     </div>
                 </div>
@@ -85,8 +85,8 @@ export default function Cards() {
                             3. Compare e escolha
                         </h3>
                         <p>
-                            Compare orçamentos de profissionais
-                            e empresas e escolha o melhor.
+                            Compare orçamentos de materiais e 
+                            escolha o melhor profissional.
                         </p>
                     </div>
                 </div>
