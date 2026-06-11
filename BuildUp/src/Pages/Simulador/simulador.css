@@ -1,0 +1,176 @@
+.simulador {
+    min-height: 100vh;
+    padding: 140px 7% 80px;
+    background: #f8fafc;
+}
+
+.simulador-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.simulador-header h1 {
+    font-size: 52px;
+    color: #0f172a;
+}
+
+.simulador-header p {
+    color: #64748b;
+    font-size: 18px;
+}
+.simulador-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.form-card,
+.resultado-card {
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.resultado-card {
+    height: fit-content;
+}
+.form-card h2,
+.resultado-card h2 {
+    margin-bottom: 25px;
+    color: #0f172a;
+}
+
+.form-card label {
+    display: block;
+    margin: 18px 0 8px;
+    font-weight: 600;
+}
+
+.form-card input,
+.form-card select {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+.btn-calcular {
+    width: 100%;
+    margin-top: 30px;
+    height: 55px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        #f97316,
+        #ff9a3d
+    );
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.info-box {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.info-box h3 {
+    color: #0f172a;
+}
+
+.info-box p {
+    color: #64748b;
+}
+
+.destaque {
+    background: #eff6ff;
+    border: 2px solid #2563eb;
+}
+
+.ia-card {
+    margin-top: 20px;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
+    color: white;
+    padding: 20px;
+    border-radius: 18px;
+}
+
+.vazio {
+    color: #64748b;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.btn-profissionais {
+    width: 100%;
+    height: 55px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 14px;
+    background: #2563EB;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.chat-ajuda-card h3 {
+    color: #1E3A8A;
+    margin-bottom: 10px;
+}
+
+.chat-ajuda-card p {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.btn-chat-ia:hover {
+    background: #1D4ED8;
+}
+
+.coluna-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chat-ajuda-card {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.btn-chat-ia {
+    width: 100%;
+    height: 55px;
+    border: none;
+    border-radius: 14px;
+    background: #2563EB;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+@media (max-width: 1000px) {
+    .simulador-grid {
+        grid-template-columns: 1fr;
+    }
+}

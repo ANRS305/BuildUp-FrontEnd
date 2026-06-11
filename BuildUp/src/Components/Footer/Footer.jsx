@@ -1,5 +1,5 @@
 import "./Footer.css";
-
+import { Link } from "react-router-dom";
 import {
     FaInstagram,
     FaFacebookF,
@@ -7,9 +7,7 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-
     return (
-
         <footer className="footer">
             <div className="footer-container">
                 {/* LOGO / DESCRIÇÃO */}
@@ -24,13 +22,13 @@ export default function Footer() {
                     </p>
                     {/* REDES */}
                     <div className="footer-social">
-                        <a href="#">
+                        <a href="https://www.instagram.com/">
                             <FaInstagram />
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com/">
                             <FaFacebookF />
                         </a>
-                        <a href="#">
+                        <a href="https://web.whatsapp.com/">
                             <FaWhatsapp />
                         </a>
                     </div>
@@ -39,15 +37,14 @@ export default function Footer() {
                 <div className="footer-links">
                     <div className="footer-column">
                         <h3>Plataforma</h3>
-                        <a href="#">Simulador</a>
-                        <a href="#">Profissionais</a>
-                        <a href="#">Empresas</a>
-                        <a href="#">Chat IA</a>
+                        <Link to="/Obra">Simulador</Link>
+                        <Link to="/profissionais">Profissionais</Link>
+                        <Link to="/chat-ia">Chat IA</Link>
                     </div>
                     <div className="footer-column">
                         <h3>Empresa</h3>
                         <a href="#">Sobre nós</a>
-                        <a href="#">Contato</a>
+                        <a href="https://mail.google.com/">Contato</a>
                         <a href="#">Suporte</a>
                     </div>
                     <div className="footer-column">

@@ -52,10 +52,9 @@ export default function Header() {
 
         <nav className="menu">
           <Link to="/">Home</Link>
-          <Link to="/profissionais">Profissionais</Link>
-          <Link to="/empresas">Empresas</Link>
-          <Link to="/simulador">Simulador</Link>
-          <Link to="/chat-ia">Chat IA</Link>
+          <Link to="/Profissionais">Profissionais</Link>
+          <Link to="/Obra">Simulador</Link>
+          <Link to="/ChatIA">Chat IA</Link>
         </nav>
 
         <div className="header-buttons">

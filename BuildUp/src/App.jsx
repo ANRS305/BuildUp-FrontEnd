@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./Pages/Home";
-import Cadastrar from "./Pages/Cadastrar";
-import Login from "./Pages/Login";
+import Home from "./Pages/Home/Home";
+import Cadastrar from "./Pages/Cadastrar/Cadastrar";
+import Login from "./Pages/Login/Login";
+import Simulador from "./Pages/Simulador/Simulador";
+import Profissionais from "./Pages/Profissionais/Profissionais";
+import ChatIA from "./Pages/ChatIA/ChatIA";
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cadastrar" element={<Cadastrar />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Obra" element={<Simulador />} />
+        <Route path="/Profissionais" element={<Profissionais />} />
+        <Route path="/ChatIA" element={<ChatIA />} />
       </Routes>
     </BrowserRouter>
   );

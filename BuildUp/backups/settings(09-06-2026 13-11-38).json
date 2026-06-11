@@ -1,0 +1,10 @@
+{
+    "workbench.colorTheme": "srtakennedy",
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "files.autoSave": "onFocusChange",
+    "cSpell.language": "pt-br",
+    "workbench.iconTheme": "vscode-icons",
+    "vscodePets.hunger": 0,
+    "vscodePets.xp": 0,
+    "vscodePets.level": 4
+}
