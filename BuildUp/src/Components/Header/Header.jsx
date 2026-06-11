@@ -60,7 +60,7 @@ export default function Header() {
         <div className="header-buttons">
           {usuario ? (
             <>
-              <Link to="/home" className="btn-login">
+              <Link to="/" className="btn-login">
                 Conta
               </Link>
 
