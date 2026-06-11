@@ -33,11 +33,12 @@ export default function Entrar() {
         senha,
       });
 
-      localStorage.setItem("usuario", JSON.stringify(response.data));
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
+
+      navigate("/");
 
       abrirModal("Sucesso", "Login realizado com sucesso!");
-
-      // window.location.href = "/home";
     } catch (erro) {
       console.error("Erro:", erro);
 
