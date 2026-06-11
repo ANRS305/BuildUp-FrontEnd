@@ -1,5 +1,5 @@
 import Header from "../Components/Header/Header";
-import Cadastrar from "../Components/Cadastrar/Cadastro";
+import Cadastrar from "./Cadastrar/Cadastro";
 import Footer from "../Components/Footer/Footer";
 import "../Components/Usuarios/usuarios.css";
 
