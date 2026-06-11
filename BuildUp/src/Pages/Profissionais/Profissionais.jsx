@@ -7,6 +7,7 @@ import {
     HiOutlineMagnifyingGlass,
     HiOutlineMapPin
 } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 export default function Profissionais() {
     const [categoria, setCategoria] = useState("Todos");
@@ -199,10 +200,12 @@ export default function Profissionais() {
                                         {p.cidade} - {p.estado}
                                     </div>
                                 </div>
-                                <div className="profissional-preco">
-                                    <h3>{p.preco}</h3>
-                                    <button>Contratar</button>
-                                </div>
+                                <Link to={"/contratar"}>
+                                    <div className="profissional-preco">
+                                        <h3>{p.preco}</h3>
+                                        <button>Contratar</button>
+                                    </div>
+                                </Link>
                             </div>
                         ))}
                     </div>
