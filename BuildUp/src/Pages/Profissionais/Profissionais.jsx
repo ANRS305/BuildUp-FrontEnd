@@ -36,9 +36,14 @@ export default function Profissionais() {
   }, []);
 
   const filtrados = profissionais.filter((p) => {
-    const matchCategoria = categoria === "Todos" || p.profissao === categoria;
+    const matchCategoria =
+      categoria === "Todos" ||
+      (p.especialidade?.descricao ?? "").toLowerCase() ===
+        categoria.toLowerCase();
 
-    const matchBusca = p.nome?.toLowerCase().includes(busca.toLowerCase());
+    const matchBusca = (p.nome ?? "")
+      .toLowerCase()
+      .includes(busca.toLowerCase());
 
     const matchEstado =
       estadoSelecionado === "Todos" || p.estado === estadoSelecionado;
@@ -89,8 +94,8 @@ export default function Profissionais() {
               "Pedreiro",
               "Pintor",
               "Eletricista",
-              "Encanador",
               "Carpinteiro",
+              "Encanador",
             ].map((item) => (
               <button
                 key={item}
@@ -119,7 +124,7 @@ export default function Profissionais() {
 
                   <div className="profissional-info">
                     <h2>{p.nome}</h2>
-                    <p>{p.profissao}</p>
+                    <p>{p.especialidade?.descricao}</p>
 
                     <span>
                       ⭐ {p.avaliacao_Media ?? "0"} ({p.totalAvaliacao ?? 0}{" "}
