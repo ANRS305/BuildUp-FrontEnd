@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { estados } from "./estados";
 import { HiOutlineMagnifyingGlass, HiOutlineMapPin } from "react-icons/hi2";
 import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Profissionais() {
+  const navigate = useNavigate();
   const [categoria, setCategoria] = useState("Todos");
   const [busca, setBusca] = useState("");
   const [estadoSelecionado, setEstadoSelecionado] = useState("Todos");
@@ -118,8 +120,8 @@ export default function Profissionais() {
 
             {!loading &&
               !erro &&
-              filtrados.map((p) => (
-                <div key={p.id} className="profissional-card">
+              filtrados.map((p, index) => (
+                <div key={p.id || index} className="profissional-card">
                   <img src={p.foto_Perfil} alt={p.nome} />
 
                   <div className="profissional-info">
@@ -139,7 +141,15 @@ export default function Profissionais() {
 
                   <div className="profissional-preco">
                     <h3>{p.preco}</h3>
-                    <button>Contratar</button>
+                    <button
+                      onClick={() =>
+                        navigate("/contratar", {
+                          state: { profissionalId: p.id_Profissional },
+                        })
+                      }
+                    >
+                      Contratar
+                    </button>
                   </div>
                 </div>
               ))}

@@ -42,7 +42,7 @@ export default function Entrar() {
 
       abrirModal("Sucesso", "Login realizado com sucesso!");
     } catch (erro) {
-      console.error("Erro:", erro);
+      console.error(erro);
 
       abrirModal(
         "Erro",
@@ -114,7 +114,7 @@ export default function Entrar() {
           setModalAberto(false);
 
           if (modalTitulo === "Sucesso") {
-            navigate("/Home");
+            navigate("/");
           }
         }}
       />
