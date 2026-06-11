@@ -2,42 +2,79 @@ import "./chatIA.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
+import api from "../../services/api";
 
 export default function ChatIA() {
     const [mensagem, setMensagem] = useState("");
+    const [carregando, setCarregando] = useState(false);
+
     const [chat, setChat] = useState([
         {
             autor: "ia",
             texto: "Olá! Sou o assistente BuildUp. Como posso ajudar na sua obra hoje?"
         }
     ]);
-    function enviarMensagem() {
+
+    async function enviarMensagem() {
         if (!mensagem.trim()) return;
 
-        setChat([
-            ...chat,
+        const mensagemUsuario = mensagem;
+
+        setChat((chatAtual) => [
+            ...chatAtual,
             {
                 autor: "usuario",
-                texto: mensagem
-            },
-            {
-                autor: "ia",
-                texto: "Esta é uma resposta de exemplo. Depois você pode conectar com uma IA real."
+                texto: mensagemUsuario
             }
         ]);
+
         setMensagem("");
+        setCarregando(true);
+
+        try {
+            const response = await api.post("/chat", {
+                mensagem: mensagemUsuario
+            });
+
+            setChat((chatAtual) => [
+                ...chatAtual,
+                {
+                    autor: "ia",
+                    texto:
+                        response.data.resposta ||
+                        "Não foi possível obter uma resposta."
+                }
+            ]);
+        } catch (error) {
+            console.error("Erro ao consultar IA:", error);
+
+            setChat((chatAtual) => [
+                ...chatAtual,
+                {
+                    autor: "ia",
+                    texto:
+                        "Desculpe, ocorreu um erro ao conectar com a IA."
+                }
+            ]);
+        } finally {
+            setCarregando(false);
+        }
     }
+
     return (
         <>
             <Header />
+
             <section className="chatia">
                 <div className="chatia-header">
                     <h1>Chat BuildUp IA</h1>
+
                     <p>
                         Tire dúvidas sobre construção, materiais,
                         orçamento e reformas.
                     </p>
                 </div>
+
                 <div className="chat-container">
                     <div className="chat-mensagens">
                         {chat.map((msg, index) => (
@@ -48,7 +85,14 @@ export default function ChatIA() {
                                 {msg.texto}
                             </div>
                         ))}
+
+                        {carregando && (
+                            <div className="mensagem ia">
+                                Digitando...
+                            </div>
+                        )}
                     </div>
+
                     <div className="chat-input">
                         <input
                             type="text"
@@ -57,17 +101,23 @@ export default function ChatIA() {
                             onChange={(e) =>
                                 setMensagem(e.target.value)
                             }
-                            onKeyDown={(e) =>
-                                e.key === "Enter" &&
-                                enviarMensagem()
-                            }
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    enviarMensagem();
+                                }
+                            }}
                         />
-                        <button onClick={enviarMensagem}>
+
+                        <button
+                            onClick={enviarMensagem}
+                            disabled={carregando}
+                        >
                             Enviar
                         </button>
                     </div>
                 </div>
             </section>
+
             <Footer />
         </>
     );
