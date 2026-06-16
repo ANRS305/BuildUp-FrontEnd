@@ -12,7 +12,7 @@ export default function ChatIA() {
     {
       autor: "ia",
       texto:
-        "Olá! Sou o assistente BuildUp. Como posso ajudar na sua obra hoje?",
+        "Olá! Sou o assistente BuildUp. Como posso te ajudar hoje?",
     },
   ]);
 
