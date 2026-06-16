@@ -6,16 +6,14 @@ export default function Modal({
     mensagem,
     onFechar,
     onConfirmar,
-    tipo = "info" // info | confirm
+    tipo = "info" 
 }) {
     if (!aberto) return null;
-
     return (
         <div className="modal-overlay" onClick={onFechar}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
                 <h2>{titulo}</h2>
                 <p>{mensagem}</p>
-
                 <div className="modal-botoes">
                     {tipo === "confirm" ? (
                         <>

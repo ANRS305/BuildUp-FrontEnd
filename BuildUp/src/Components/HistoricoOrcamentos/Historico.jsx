@@ -15,7 +15,6 @@ export default function Historico({ onSelecionarOrcamento }) {
         tipo: "info",
         onConfirmar: null
     });
-
     const abrirModal = (titulo, mensagem, tipo = "info", onConfirmar = null) => {
         setModal({
             aberto: true,
@@ -25,11 +24,9 @@ export default function Historico({ onSelecionarOrcamento }) {
             onConfirmar
         });
     };
-
     useEffect(() => {
         carregarHistorico();
     }, []);
-
     async function carregarHistorico() {
         try {
             const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
@@ -101,7 +98,6 @@ export default function Historico({ onSelecionarOrcamento }) {
         <>
             <div className="historico-card">
                 <h3>Histórico de Orçamentos</h3>
-
             {erroCarregamento ? (
                 <p className="erro-historico">
                     Ainda não tem nenhum histórico.
@@ -113,7 +109,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                         {historico.map((item) => (
                             <div key={item.id_Orcamento} className="historico-item">
                                 <h4>{item.tipo_Obra}</h4>
-
                                 <p>
                                     {Number(item.valor_Estimado).toLocaleString(
                                         "pt-BR",
@@ -123,9 +118,7 @@ export default function Historico({ onSelecionarOrcamento }) {
                                         }
                                     )}
                                 </p>
-
                                 <span>{item.tempo_Estimado}</span>
-
                                 <div className="historico-botoes">
                                     <button
                                         className="btn-ver"
@@ -133,7 +126,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                                     >
                                         Ver
                                     </button>
-
                                     <button
                                         className="btn-excluir"
                                         onClick={() => confirmarExclusao(item.id_Orcamento)}
@@ -146,7 +138,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                     </div>
                 )}
             </div>
-
             <Modal
                 aberto={modal.aberto}
                 titulo={modal.titulo}
@@ -163,7 +154,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                 }
                 onConfirmar={() => {
                     if (modal.onConfirmar) modal.onConfirmar();
-
                     setModal({
                         aberto: false,
                         titulo: "",
