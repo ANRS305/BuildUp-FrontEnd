@@ -1,6 +1,7 @@
 import "../Simulador/simulador.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import Historico from "../../Components/HistoricoOrcamentos/Historico";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -134,6 +135,7 @@ export default function Simulador() {
                                 Calcular estimativa
                             </button>
                         </div>
+                        <Historico />
                         {resultado && (
                             <div className="chat-ajuda-card">
                                 <h3>
