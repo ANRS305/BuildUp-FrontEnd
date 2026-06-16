@@ -11,8 +11,20 @@ export default function Historico({ onSelecionarOrcamento }) {
     const [modal, setModal] = useState({
         aberto: false,
         titulo: "",
-        mensagem: ""
+        mensagem: "",
+        tipo: "info",
+        onConfirmar: null
     });
+
+    const abrirModal = (titulo, mensagem, tipo = "info", onConfirmar = null) => {
+        setModal({
+            aberto: true,
+            titulo,
+            mensagem,
+            tipo,
+            onConfirmar
+        });
+    };
 
     useEffect(() => {
         carregarHistorico();
@@ -20,11 +32,7 @@ export default function Historico({ onSelecionarOrcamento }) {
 
     async function carregarHistorico() {
         try {
-            setErroCarregamento(false);
-
-            const usuarioLogado = JSON.parse(
-                localStorage.getItem("usuario")
-            );
+            const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
 
             const idUsuario =
                 usuarioLogado?.id_Usuario ||
@@ -38,7 +46,6 @@ export default function Historico({ onSelecionarOrcamento }) {
 
             setHistorico(response.data || []);
         } catch (error) {
-            console.error("Erro ao carregar histórico:", error);
             setErroCarregamento(true);
             setHistorico([]);
         } finally {
@@ -53,46 +60,31 @@ export default function Historico({ onSelecionarOrcamento }) {
             itens: item.itens
         });
 
-        setModal({
-            aberto: true,
-            titulo: "Orçamento carregado",
-            mensagem: "O orçamento foi aplicado no simulador."
-        });
+        abrirModal("Sucesso", "Orçamento carregado no simulador.");
+    }
+
+    function confirmarExclusao(id) {
+        abrirModal(
+            "Excluir orçamento",
+            "Tem certeza que deseja excluir este orçamento?",
+            "confirm",
+            () => excluirOrcamento(id)
+        );
     }
 
     async function excluirOrcamento(id) {
-        const confirmar = window.confirm(
-            "Deseja realmente excluir este orçamento?"
-        );
-
-        if (!confirmar) return;
-
         try {
             await axios.delete(
                 `http://localhost:5246/api/Orcamentos/${id}`
             );
 
-            setHistorico(prev =>
-                prev.filter(
-                    (orcamento) =>
-                        orcamento.id_Orcamento !== id
-                )
+            setHistorico((prev) =>
+                prev.filter((item) => item.id_Orcamento !== id)
             );
 
-            setModal({
-                aberto: true,
-                titulo: "Sucesso",
-                mensagem: "Orçamento excluído com sucesso!"
-            });
-
+            abrirModal("Sucesso", "Orçamento excluído com sucesso!");
         } catch (error) {
-            console.error(error);
-
-            setModal({
-                aberto: true,
-                titulo: "Erro",
-                mensagem: "Erro ao excluir orçamento."
-            });
+            abrirModal("Erro", "Não foi possível excluir o orçamento.");
         }
     }
 
@@ -110,29 +102,26 @@ export default function Historico({ onSelecionarOrcamento }) {
             <div className="historico-card">
                 <h3>Histórico de Orçamentos</h3>
 
-                {/* ✅ SOMENTE UMA MENSAGEM POR VEZ */}
-                {erroCarregamento ? (
-                    <p className="erro-historico">
-                        Não foi possível carregar o histórico.
-                    </p>
-                ) : historico.length === 0 ? (
-                    <p>Nenhum orçamento encontrado.</p>
-                ) : (
+            {erroCarregamento ? (
+                <p className="erro-historico">
+                    Ainda não tem nenhum histórico.
+                </p>
+            ) : historico.length === 0 ? (
+                <p>Nenhum orçamento encontrado.</p>
+            ) : (
                     <div className="historico-lista">
                         {historico.map((item) => (
-                            <div
-                                key={item.id_Orcamento}
-                                className="historico-item"
-                            >
+                            <div key={item.id_Orcamento} className="historico-item">
                                 <h4>{item.tipo_Obra}</h4>
 
                                 <p>
-                                    {Number(
-                                        item.valor_Estimado
-                                    ).toLocaleString("pt-BR", {
-                                        style: "currency",
-                                        currency: "BRL"
-                                    })}
+                                    {Number(item.valor_Estimado).toLocaleString(
+                                        "pt-BR",
+                                        {
+                                            style: "currency",
+                                            currency: "BRL"
+                                        }
+                                    )}
                                 </p>
 
                                 <span>{item.tempo_Estimado}</span>
@@ -140,20 +129,14 @@ export default function Historico({ onSelecionarOrcamento }) {
                                 <div className="historico-botoes">
                                     <button
                                         className="btn-ver"
-                                        onClick={() =>
-                                            visualizarOrcamento(item)
-                                        }
+                                        onClick={() => visualizarOrcamento(item)}
                                     >
                                         Ver
                                     </button>
 
                                     <button
                                         className="btn-excluir"
-                                        onClick={() =>
-                                            excluirOrcamento(
-                                                item.id_Orcamento
-                                            )
-                                        }
+                                        onClick={() => confirmarExclusao(item.id_Orcamento)}
                                     >
                                         Excluir
                                     </button>
@@ -164,18 +147,31 @@ export default function Historico({ onSelecionarOrcamento }) {
                 )}
             </div>
 
-            {/* MODAL */}
             <Modal
                 aberto={modal.aberto}
                 titulo={modal.titulo}
                 mensagem={modal.mensagem}
+                tipo={modal.tipo}
                 onFechar={() =>
                     setModal({
                         aberto: false,
                         titulo: "",
-                        mensagem: ""
+                        mensagem: "",
+                        tipo: "info",
+                        onConfirmar: null
                     })
                 }
+                onConfirmar={() => {
+                    if (modal.onConfirmar) modal.onConfirmar();
+
+                    setModal({
+                        aberto: false,
+                        titulo: "",
+                        mensagem: "",
+                        tipo: "info",
+                        onConfirmar: null
+                    });
+                }}
             />
         </>
     );
