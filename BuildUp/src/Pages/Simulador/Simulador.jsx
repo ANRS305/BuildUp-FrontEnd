@@ -162,12 +162,10 @@ export default function Simulador() {
                                     (item, index) => (
                                         <div className="info-box" key={index}>
                                             <h3>
-                                                Material {item.id_Material}
+                                                {item.nomeMaterial}
                                             </h3>
                                             <p>
-                                                Quantidade:
-                                                {" "}
-                                                {item.quantidade}
+                                                Quantidade: {item.quantidade} {item.unidade}
                                             </p>
                                             <p>
                                                 Valor:
