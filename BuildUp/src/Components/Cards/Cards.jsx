@@ -48,7 +48,7 @@ export default function Cards() {
                         </h3>
                         <p>
                             Informe as medidas, tipo de obra
-                            e quantidade de quartos...
+                            e quantidade de quartos e banheiros.
                         </p>
                     </div>
                 </div>
