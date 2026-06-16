@@ -86,6 +86,10 @@ export default function Contratar() {
     try {
       await api.post("/Contratacoes", payload);
 
+      await api.put(`/Profissional/${idProfissional}/disponibilidade`, {
+        disponivel: false,
+      });
+
       abrirModal("Sucesso", "Solicitação de contratação enviada com sucesso!");
     } catch (erro) {
       console.error(erro);
