@@ -2,8 +2,8 @@ import "../Simulador/simulador.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Simulador() {
     const navigate = useNavigate();
@@ -12,34 +12,58 @@ export default function Simulador() {
     const [quartos, setQuartos] = useState("");
     const [banheiros, setBanheiros] = useState("");
     const [resultado, setResultado] = useState(null);
-    function calcular() {
-        if (
-            !tipoObra ||
-            !area ||
-            !quartos ||
-            !banheiros
-        ) {
+    async function calcular() {
+        if (!tipoObra || !area || !quartos || !banheiros) {
             alert("Preencha todos os campos.");
             return;
         }
-        const areaNum = Number(area);
-        const tijolos = areaNum * 100;
-        const cimento = Math.round(areaNum * 0.5);
-        const areia = Math.round(areaNum * 0.15);
-        const tinta = Math.round(areaNum * 0.2);
-        const materiais = areaNum * 400;
-        const maoDeObra = areaNum * 180;
-        const total = materiais + maoDeObra;
-        setResultado({
-            tijolos,
-            cimento,
-            areia,
-            tinta,
-            materiais,
-            maoDeObra,
-            total,
-            economia: Math.round(total * 0.1)
-        });
+        const usuarioLogado = JSON.parse(
+            localStorage.getItem("usuario")
+        );
+        console.log("USUARIO LOGADO:", usuarioLogado);
+        if (!usuarioLogado) {
+            alert("Faça login antes de gerar um orçamento.");
+            return;
+        }
+        try {
+            const response = await axios.post(
+                "http://localhost:5246/api/Orcamentos/simular",
+                {
+                    tipo_Obra: tipoObra,
+                    metragem: Number(area),
+                    quantidade_Quartos: Number(quartos),
+                    quantidade_Banheiros: Number(banheiros),
+
+                    id_Usuario:
+                        usuarioLogado.id_Usuario ||
+                        usuarioLogado.idUsuario ||
+                        usuarioLogado.id ||
+                        usuarioLogado.Id_Usuario
+                }
+            );
+            const dados = response.data;
+            console.log("ORÇAMENTO:", dados);
+            setResultado({
+                total: dados.valorTotal,
+                tempo: dados.orcamento?.tempo_Estimado,
+                itens: dados.itens || []
+            });
+        } catch (error) {
+            console.error("ERRO:", error);
+            if (error.response) {
+                console.error("STATUS:", error.response.status);
+                console.error("DADOS:", error.response.data);
+                alert(
+                    JSON.stringify(
+                        error.response.data,
+                        null,
+                        2
+                    )
+                );
+            } else {
+                alert("Erro ao conectar com a API.");
+            }
+        }
     }
     return (
         <>
@@ -61,20 +85,15 @@ export default function Simulador() {
                             <select
                                 value={tipoObra}
                                 onChange={(e) =>
-                                    setTipoObra(e.target.value)
-                                }>
+                                    setTipoObra(e.target.value)}>
                                 <option value="">
                                     Selecione o tipo da obra
                                 </option>
-                                <option value="Casa">
-                                    Casa
-                                </option>
+                                <option value="Casa">Casa</option>
                                 <option value="Apartamento">
                                     Apartamento
                                 </option>
-                                <option value="Hotel">
-                                    Hotel
-                                </option>
+                                <option value="Hotel">Hotel</option>
                                 <option value="Escritório">
                                     Escritório
                                 </option>
@@ -91,27 +110,24 @@ export default function Simulador() {
                             <label>Área total (m²)</label>
                             <input
                                 type="number"
-                                placeholder="Ex: 120"
                                 value={area}
                                 onChange={(e) =>
-                                    setArea(e.target.value)
-                                }/>
-                            <label>Quantos quartos?</label>
+                                    setArea(e.target.value)}
+                                placeholder="Ex: 120"/>
+                            <label>Quantidade de quartos</label>
                             <input
                                 type="number"
-                                placeholder="Ex: 3"
                                 value={quartos}
                                 onChange={(e) =>
-                                    setQuartos(e.target.value)
-                                }/>
-                            <label>Quantos banheiros?</label>
+                                    setQuartos(e.target.value)}
+                                placeholder="Ex: 3"/>
+                            <label>Quantidade de banheiros</label>
                             <input
                                 type="number"
-                                placeholder="Ex: 2"
                                 value={banheiros}
                                 onChange={(e) =>
-                                    setBanheiros(e.target.value)
-                                }/>
+                                    setBanheiros(e.target.value)}
+                                placeholder="Ex: 2"/>
                             <button
                                 className="btn-calcular"
                                 onClick={calcular}>
@@ -120,16 +136,18 @@ export default function Simulador() {
                         </div>
                         {resultado && (
                             <div className="chat-ajuda-card">
-                                <h3>Precisa de mais detalhes?</h3>
+                                <h3>
+                                    Precisa de mais detalhes?
+                                </h3>
                                 <p>
-                                    Para mais informações sobre materiais ou tirar dúvidas, 
-                                    consulte o Chat BuildUp IA.
+                                    Para mais informações sobre materiais
+                                    ou tirar dúvidas, consulte o Chat
+                                    BuildUp IA.
                                 </p>
-
                                 <button
                                     className="btn-chat-ia"
-                                    onClick={() => navigate("/chatia")}
-                                >
+                                    onClick={() =>
+                                        navigate("/chatia")}>
                                     Abrir Chat IA
                                 </button>
                             </div>
@@ -140,59 +158,43 @@ export default function Simulador() {
                         <h2>Resumo da estimativa</h2>
                         {resultado ? (
                             <>
+                                {resultado.itens.map(
+                                    (item, index) => (
+                                        <div className="info-box" key={index}>
+                                            <h3>
+                                                Material {item.id_Material}
+                                            </h3>
+                                            <p>
+                                                Quantidade:
+                                                {" "}
+                                                {item.quantidade}
+                                            </p>
+                                            <p>
+                                                Valor:
+                                                {" "}
+                                                {Number(
+                                                    item.preco_Estimado
+                                                ).toLocaleString(
+                                                    "pt-BR",
+                                                    {
+                                                        style: "currency",
+                                                        currency: "BRL"
+                                                    }
+                                                )}
+                                            </p>
+                                        </div>
+                                    )
+                                )}
                                 <div className="info-box">
-                                    <h3>Tijolos</h3>
-                                    <p>
-                                        {resultado.tijolos.toLocaleString()}
-                                        {" "}unidades
-                                    </p>
-                                </div>
-                                <div className="info-box">
-                                    <h3>Cimento</h3>
-                                    <p>
-                                        {resultado.cimento} sacos
-                                    </p>
-                                </div>
-                                <div className="info-box">
-                                    <h3>Areia</h3>
-                                    <p>
-                                        {resultado.areia} m³
-                                    </p>
-                                </div>
-                                <div className="info-box">
-                                    <h3>Tinta Acabamento</h3>
-                                    <p>
-                                        {resultado.tinta} litros
-                                    </p>
-                                </div>
-                                <div className="info-box">
-                                    <h3>Materiais</h3>
-                                    <p>
-                                        {resultado.materiais.toLocaleString(
-                                            "pt-BR",
-                                            {
-                                                style: "currency",
-                                                currency: "BRL"
-                                            }
-                                        )}
-                                    </p>
-                                </div>
-                                <div className="info-box">
-                                    <h3>Mão de obra</h3>
-                                    <p>
-                                        {resultado.maoDeObra.toLocaleString(
-                                            "pt-BR",
-                                            {
-                                                style: "currency",
-                                                currency: "BRL"
-                                            }
-                                        )}
-                                    </p>
+                                    <h3>Tempo estimado</h3>
+                                    <p>{resultado.tempo}</p>
                                 </div>
                                 <div className="info-box destaque">
                                     <h3>Total estimado</h3>
                                     <p>
-                                        {resultado.total.toLocaleString(
+                                        {Number(
+                                            resultado.total
+                                        ).toLocaleString(
                                             "pt-BR",
                                             {
                                                 style: "currency",
@@ -202,14 +204,15 @@ export default function Simulador() {
                                     </p>
                                 </div>
                                 <Link to="/profissionais" className="btn-profissionais">
-                                    Encontrar profissionais para esta obra
+                                    Encontrar profissionais
+                                    para esta obra
                                 </Link>
                             </>
                         ) : (
                             <div className="vazio">
-                                Preencha as informações da obra para
-                                visualizar a estimativa de materiais
-                                e custos.
+                                Preencha as informações da obra
+                                para visualizar a estimativa
+                                de materiais e custos.
                             </div>
                         )}
                     </div>
