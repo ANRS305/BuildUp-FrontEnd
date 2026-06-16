@@ -82,6 +82,7 @@ export default function Simulador() {
       <section className="simulador">
         <div className="simulador-header">
           <h1>Simulador de Obras</h1>
+          <p>Compare avaliações, preços e especialidades.</p>
         </div>
 
         <div className="simulador-grid">
