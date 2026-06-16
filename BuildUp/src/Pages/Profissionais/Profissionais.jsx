@@ -88,7 +88,6 @@ export default function Profissionais() {
             ))}
           </select>
         </div>
-
         <div className="conteudo-profissionais">
           <aside className="categorias">
             <h3>Categorias</h3>
@@ -128,25 +127,20 @@ export default function Profissionais() {
                   className="profissional-card"
                 >
                   <img src={p.foto_Perfil} alt={p.nome} />
-
                   <div className="profissional-info">
                     <h2>{p.nome}</h2>
                     <p>{p.especialidade?.descricao}</p>
-
                     <span>
                       ⭐ {p.avaliacao_Media ?? "0"} ({p.totalAvaliacao ?? 0}{" "}
                       Avaliações)
                     </span>
-
                     <div className="localizacao">
                       <HiOutlineMapPin />
                       {p.cidade} - {p.estado}
                     </div>
                   </div>
-
                   <div className="profissional-preco">
                     <h3>R$ {p.valor_Diaria}</h3>
-
                     <button
                       onClick={() => {
                         const usuarioLogado = localStorage.getItem("usuario");
@@ -155,7 +149,6 @@ export default function Profissionais() {
                           navigate("/login");
                           return;
                         }
-
                         navigate("/contratar", {
                           state: {
                             profissionalId: p.id_Profissional,
@@ -171,7 +164,6 @@ export default function Profissionais() {
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );
