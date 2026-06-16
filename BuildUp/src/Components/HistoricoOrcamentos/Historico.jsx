@@ -66,28 +66,23 @@ export default function Historico({ onSelecionarOrcamento }) {
         );
 
         if (!confirmar) return;
-
         try {
             await axios.delete(
                 `http://localhost:5246/api/Orcamentos/${id}`
             );
-
             setHistorico(prev =>
                 prev.filter(
                     (orcamento) =>
                         orcamento.id_Orcamento !== id
                 )
             );
-
             setModal({
                 aberto: true,
                 titulo: "Sucesso",
                 mensagem: "Orçamento excluído com sucesso!"
             });
-
         } catch (error) {
             console.error(error);
-
             setModal({
                 aberto: true,
                 titulo: "Erro",
@@ -95,7 +90,6 @@ export default function Historico({ onSelecionarOrcamento }) {
             });
         }
     }
-
     if (carregando) {
         return (
             <div className="historico-card">
@@ -109,8 +103,6 @@ export default function Historico({ onSelecionarOrcamento }) {
         <>
             <div className="historico-card">
                 <h3>Histórico de Orçamentos</h3>
-
-                {/* ✅ SOMENTE UMA MENSAGEM POR VEZ */}
                 {erroCarregamento ? (
                     <p className="erro-historico">
                         Não foi possível carregar o histórico.
@@ -125,7 +117,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                                 className="historico-item"
                             >
                                 <h4>{item.tipo_Obra}</h4>
-
                                 <p>
                                     {Number(
                                         item.valor_Estimado
@@ -134,9 +125,7 @@ export default function Historico({ onSelecionarOrcamento }) {
                                         currency: "BRL"
                                     })}
                                 </p>
-
                                 <span>{item.tempo_Estimado}</span>
-
                                 <div className="historico-botoes">
                                     <button
                                         className="btn-ver"
@@ -146,7 +135,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                                     >
                                         Ver
                                     </button>
-
                                     <button
                                         className="btn-excluir"
                                         onClick={() =>
@@ -163,7 +151,6 @@ export default function Historico({ onSelecionarOrcamento }) {
                     </div>
                 )}
             </div>
-
             {/* MODAL */}
             <Modal
                 aberto={modal.aberto}
