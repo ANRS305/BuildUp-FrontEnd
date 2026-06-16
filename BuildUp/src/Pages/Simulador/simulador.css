@@ -70,31 +70,6 @@
   cursor: pointer;
 }
 
-.simulador-header {
-  position: relative;
-  padding-right: 160px;
-}
-
-.btn-atualizar-canto {
-  position: absolute;
-  top: 40px;
-  right: 15px;
-  color: white;
-  background: linear-gradient(90deg, #f97316, #ff9a3d);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-  transition: transform 0.2s;
-}
-
-.btn-atualizar-canto:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #ff9a3d, #f97316);
-}
-
 .info-box {
   background: #f8fafc;
   padding: 18px;
