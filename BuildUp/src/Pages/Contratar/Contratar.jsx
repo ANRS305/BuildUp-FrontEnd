@@ -22,7 +22,20 @@ export default function Contratar() {
 
   const idProfissional = location.state?.profissionalId || 0;
 
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
+
+  const idUsuario =
+    usuarioLogado?.id_Usuario ||
+    usuarioLogado?.idUsuario ||
+    usuarioLogado?.id ||
+    0;
+
   useEffect(() => {
+    if (!localStorage.getItem("usuario")) {
+      navigate("/login");
+      return;
+    }
+
     if (!idProfissional || idProfissional === 0) {
       navigate("/");
     }
@@ -38,30 +51,17 @@ export default function Contratar() {
     e.preventDefault();
     setCarregando(true);
 
-    const usuarioLogado = localStorage.getItem("usuario");
-    if (!usuarioLogado) {
+    if (!idUsuario) {
       abrirModal(
         "Erro",
-        "Você precisa estar logado para solicitar uma contratação.",
+        "Falha ao identificar o usuário logado. Faça login novamente.",
       );
       setCarregando(false);
       return;
     }
 
-    const usuario = JSON.parse(usuarioLogado);
-    const idUsuario = usuario.id || usuario.idUsuario || 0;
-
-    if (!idUsuario || idUsuario === 0) {
-      abrirModal(
-        "Erro",
-        "Falha ao identificar o seu usuário logado. Faça login novamente.",
-      );
-      setCarregando(false);
-      return;
-    }
-
-    if (!idProfissional || idProfissional === 0) {
-      abrirModal("Erro", "Profissional inválido ou não selecionado.");
+    if (!idProfissional) {
+      abrirModal("Erro", "Falha ao identificar o profissional selecionado.");
       setCarregando(false);
       return;
     }
@@ -69,6 +69,7 @@ export default function Contratar() {
     const ISOdataInicio = dataInicio
       ? new Date(`${dataInicio}T00:00:00`).toISOString()
       : new Date().toISOString();
+
     const ISOdataConclusao = dataConclusao
       ? new Date(`${dataConclusao}T23:59:59`).toISOString()
       : new Date().toISOString();
@@ -84,13 +85,15 @@ export default function Contratar() {
 
     try {
       await api.post("/Contratacoes", payload);
+
       abrirModal("Sucesso", "Solicitação de contratação enviada com sucesso!");
     } catch (erro) {
       console.error(erro);
+
       abrirModal(
         "Erro",
         erro.response?.data?.mensagem ||
-          "Não foi possível enviar a solicitação. Verifique os dados.",
+          "Não foi possível enviar a solicitação.",
       );
     } finally {
       setCarregando(false);
@@ -100,16 +103,20 @@ export default function Contratar() {
   return (
     <>
       <Header />
+
       <section className="cadastro">
         <div className="cadastro-card">
           <h1>Fazer contratação</h1>
+
           <p>
             Preencha as informações abaixo para enviar sua solicitação ao
             profissional.
           </p>
+
           <form className="cadastro-form" onSubmit={enviarContratacao}>
             <div className="input-group">
               <label>Data de Início</label>
+
               <input
                 type="date"
                 value={dataInicio}
@@ -117,8 +124,10 @@ export default function Contratar() {
                 required
               />
             </div>
+
             <div className="input-group">
               <label>Data Prevista para Conclusão</label>
+
               <input
                 type="date"
                 value={dataConclusao}
@@ -126,8 +135,10 @@ export default function Contratar() {
                 required
               />
             </div>
+
             <div className="input-group">
               <label>Orçamento Disponível</label>
+
               <input
                 type="number"
                 step="0.01"
@@ -137,8 +148,10 @@ export default function Contratar() {
                 required
               />
             </div>
+
             <div className="input-group">
               <label>Descrição do Serviço</label>
+
               <textarea
                 placeholder="Descreva detalhadamente o serviço que deseja realizar..."
                 rows="5"
@@ -147,6 +160,7 @@ export default function Contratar() {
                 required
               />
             </div>
+
             <button
               type="submit"
               className="btn-cadastrar"
@@ -157,6 +171,7 @@ export default function Contratar() {
           </form>
         </div>
       </section>
+
       <Footer />
 
       <Modal
@@ -165,6 +180,7 @@ export default function Contratar() {
         mensagem={modalMensagem}
         onFechar={() => {
           setModalAberto(false);
+
           if (modalTitulo === "Sucesso") {
             navigate("/");
           }

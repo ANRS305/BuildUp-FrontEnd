@@ -50,7 +50,9 @@ export default function Profissionais() {
     const matchEstado =
       estadoSelecionado === "Todos" || p.estado === estadoSelecionado;
 
-    return matchCategoria && matchBusca && matchEstado;
+    const matchDisponivel = p.disponivel === true;
+
+    return matchCategoria && matchBusca && matchEstado && matchDisponivel;
   });
 
   return (
@@ -121,7 +123,10 @@ export default function Profissionais() {
             {!loading &&
               !erro &&
               filtrados.map((p, index) => (
-                <div key={p.id || index} className="profissional-card">
+                <div
+                  key={p.id_Profissional || index}
+                  className="profissional-card"
+                >
                   <img src={p.foto_Perfil} alt={p.nome} />
 
                   <div className="profissional-info">
@@ -140,13 +145,23 @@ export default function Profissionais() {
                   </div>
 
                   <div className="profissional-preco">
-                    <h3>{p.preco}</h3>
+                    <h3>R$ {p.valor_Diaria}</h3>
+
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        const usuarioLogado = localStorage.getItem("usuario");
+
+                        if (!usuarioLogado) {
+                          navigate("/login");
+                          return;
+                        }
+
                         navigate("/contratar", {
-                          state: { profissionalId: p.id_Profissional },
-                        })
-                      }
+                          state: {
+                            profissionalId: p.id_Profissional,
+                          },
+                        });
+                      }}
                     >
                       Contratar
                     </button>
