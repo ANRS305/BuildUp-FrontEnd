@@ -140,7 +140,8 @@ export default function Profissionais() {
                     </div>
                   </div>
                   <div className="profissional-preco">
-                    <h3>R$ {p.valor_Diaria}</h3>
+                    <h3>R$ {p.valor_Diaria} a diária</h3>
+
                     <button
                       onClick={() => {
                         const usuarioLogado = localStorage.getItem("usuario");
