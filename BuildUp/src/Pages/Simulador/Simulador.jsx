@@ -7,7 +7,6 @@ import axios from "axios";
 
 export default function Simulador() {
     const navigate = useNavigate();
-
     const [tipoObra, setTipoObra] = useState("");
     const [area, setArea] = useState("");
     const [quartos, setQuartos] = useState("");
@@ -18,6 +17,14 @@ export default function Simulador() {
             alert("Preencha todos os campos.");
             return;
         }
+        const usuarioLogado = JSON.parse(
+            localStorage.getItem("usuario")
+        );
+        console.log("USUARIO LOGADO:", usuarioLogado);
+        if (!usuarioLogado) {
+            alert("Faça login antes de gerar um orçamento.");
+            return;
+        }
         try {
             const response = await axios.post(
                 "http://localhost:5246/api/Orcamentos/simular",
@@ -26,25 +33,37 @@ export default function Simulador() {
                     metragem: Number(area),
                     quantidade_Quartos: Number(quartos),
                     quantidade_Banheiros: Number(banheiros),
-                    id_Usuario: 1
+
+                    id_Usuario:
+                        usuarioLogado.id_Usuario ||
+                        usuarioLogado.idUsuario ||
+                        usuarioLogado.id ||
+                        usuarioLogado.Id_Usuario
                 }
             );
             const dados = response.data;
+            console.log("ORÇAMENTO:", dados);
             setResultado({
                 total: dados.valorTotal,
                 tempo: dados.orcamento?.tempo_Estimado,
                 itens: dados.itens || []
             });
-            } catch (error) {
-                console.log("ERRO COMPLETO:", error);
-
-                if (error.response) {
-                    console.log("STATUS:", error.response.status);
-                    console.log("DADOS:", error.response.data);
-                }
-
-                alert("Erro ao gerar orçamento");
+        } catch (error) {
+            console.error("ERRO:", error);
+            if (error.response) {
+                console.error("STATUS:", error.response.status);
+                console.error("DADOS:", error.response.data);
+                alert(
+                    JSON.stringify(
+                        error.response.data,
+                        null,
+                        2
+                    )
+                );
+            } else {
+                alert("Erro ao conectar com a API.");
             }
+        }
     }
     return (
         <>
@@ -66,9 +85,7 @@ export default function Simulador() {
                             <select
                                 value={tipoObra}
                                 onChange={(e) =>
-                                    setTipoObra(e.target.value)
-                                }
-                            >
+                                    setTipoObra(e.target.value)}>
                                 <option value="">
                                     Selecione o tipo da obra
                                 </option>
@@ -95,32 +112,25 @@ export default function Simulador() {
                                 type="number"
                                 value={area}
                                 onChange={(e) =>
-                                    setArea(e.target.value)
-                                }
-                                placeholder="Ex: 120"
-                            />
+                                    setArea(e.target.value)}
+                                placeholder="Ex: 120"/>
                             <label>Quantidade de quartos</label>
                             <input
                                 type="number"
                                 value={quartos}
                                 onChange={(e) =>
-                                    setQuartos(e.target.value)
-                                }
-                                placeholder="Ex: 3"
-                            />
+                                    setQuartos(e.target.value)}
+                                placeholder="Ex: 3"/>
                             <label>Quantidade de banheiros</label>
                             <input
                                 type="number"
                                 value={banheiros}
                                 onChange={(e) =>
-                                    setBanheiros(e.target.value)
-                                }
-                                placeholder="Ex: 2"
-                            />
+                                    setBanheiros(e.target.value)}
+                                placeholder="Ex: 2"/>
                             <button
                                 className="btn-calcular"
-                                onClick={calcular}
-                            >
+                                onClick={calcular}>
                                 Calcular estimativa
                             </button>
                         </div>
@@ -130,16 +140,14 @@ export default function Simulador() {
                                     Precisa de mais detalhes?
                                 </h3>
                                 <p>
-                                    Para mais informações sobre
-                                    materiais ou tirar dúvidas,
-                                    consulte o Chat BuildUp IA.
+                                    Para mais informações sobre materiais
+                                    ou tirar dúvidas, consulte o Chat
+                                    BuildUp IA.
                                 </p>
                                 <button
                                     className="btn-chat-ia"
                                     onClick={() =>
-                                        navigate("/chatia")
-                                    }
-                                >
+                                        navigate("/chatia")}>
                                     Abrir Chat IA
                                 </button>
                             </div>
@@ -152,29 +160,25 @@ export default function Simulador() {
                             <>
                                 {resultado.itens.map(
                                     (item, index) => (
-                                        <div
-                                            className="info-box"
-                                            key={index}
-                                        >
+                                        <div className="info-box" key={index}>
                                             <h3>
-                                                Material{" "}
-                                                {item.id_Material}
+                                                Material {item.id_Material}
                                             </h3>
-
                                             <p>
-                                                Quantidade:{" "}
+                                                Quantidade:
+                                                {" "}
                                                 {item.quantidade}
                                             </p>
-
                                             <p>
-                                                Valor:{" "}
-                                                {item.preco_Estimado?.toLocaleString(
+                                                Valor:
+                                                {" "}
+                                                {Number(
+                                                    item.preco_Estimado
+                                                ).toLocaleString(
                                                     "pt-BR",
                                                     {
-                                                        style:
-                                                            "currency",
-                                                        currency:
-                                                            "BRL"
+                                                        style: "currency",
+                                                        currency: "BRL"
                                                     }
                                                 )}
                                             </p>
@@ -182,33 +186,24 @@ export default function Simulador() {
                                     )
                                 )}
                                 <div className="info-box">
-                                    <h3>
-                                        Tempo estimado
-                                    </h3>
-                                    <p>
-                                        {resultado.tempo}
-                                    </p>
+                                    <h3>Tempo estimado</h3>
+                                    <p>{resultado.tempo}</p>
                                 </div>
                                 <div className="info-box destaque">
-                                    <h3>
-                                        Total estimado
-                                    </h3>
+                                    <h3>Total estimado</h3>
                                     <p>
-                                        {resultado.total?.toLocaleString(
+                                        {Number(
+                                            resultado.total
+                                        ).toLocaleString(
                                             "pt-BR",
                                             {
-                                                style:
-                                                    "currency",
-                                                currency:
-                                                    "BRL"
+                                                style: "currency",
+                                                currency: "BRL"
                                             }
                                         )}
                                     </p>
                                 </div>
-                                <Link
-                                    to="/profissionais"
-                                    className="btn-profissionais"
-                                >
+                                <Link to="/profissionais" className="btn-profissionais">
                                     Encontrar profissionais
                                     para esta obra
                                 </Link>
