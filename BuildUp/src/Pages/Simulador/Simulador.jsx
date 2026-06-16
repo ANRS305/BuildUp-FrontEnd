@@ -135,7 +135,7 @@ export default function Simulador() {
                                 Calcular estimativa
                             </button>
                         </div>
-                        <Historico />
+                        <Historico onSelecionarOrcamento={setResultado} />
                         {resultado && (
                             <div className="chat-ajuda-card">
                                 <h3>
