@@ -68,13 +68,11 @@ export default function Profissionais() {
               type="text"
               placeholder="Buscar profissional..."
               value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-            />
+              onChange={(e) => setBusca(e.target.value)}/>
           </div>
           <select
             value={estadoSelecionado}
-            onChange={(e) => setEstadoSelecionado(e.target.value)}
-          >
+            onChange={(e) => setEstadoSelecionado(e.target.value)}>
             <option value="Todos">Todos os estados</option>
             {estados.map((estado) => (
               <option key={estado} value={estado}>

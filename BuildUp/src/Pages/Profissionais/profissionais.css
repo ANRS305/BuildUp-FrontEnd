@@ -54,6 +54,7 @@
 
 .filtros select {
     height: 55px;
+    width: 181px;
     border-radius: 14px;
     border: 1px solid #E5E7EB;
     padding: 0 2px;
