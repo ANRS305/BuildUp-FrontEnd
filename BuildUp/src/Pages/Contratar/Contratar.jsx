@@ -1,7 +1,7 @@
 import "./contratar.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../Components/Modal/Modal";
 import api from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -121,7 +121,8 @@ export default function Contratar() {
                 type="date"
                 value={dataInicio}
                 onChange={(e) => setDataInicio(e.target.value)}
-                required/>
+                required
+              />
             </div>
             <div className="input-group">
               <label>Data Prevista para Conclusão</label>
@@ -129,7 +130,8 @@ export default function Contratar() {
                 type="date"
                 value={dataConclusao}
                 onChange={(e) => setDataConclusao(e.target.value)}
-                required/>
+                required
+              />
             </div>
             <div className="input-group">
               <label>Orçamento Disponível</label>
@@ -139,7 +141,8 @@ export default function Contratar() {
                 placeholder="R$ 0,00"
                 value={valorCombinado}
                 onChange={(e) => setValorCombinado(e.target.value)}
-                required/>
+                required
+              />
             </div>
             <div className="input-group">
               <label>Descrição do Serviço</label>
@@ -148,12 +151,14 @@ export default function Contratar() {
                 rows="5"
                 value={descricaoServico}
                 onChange={(e) => setDescricaoServico(e.target.value)}
-                required/>
+                required
+              />
             </div>
             <button
               type="submit"
               className="btn-cadastrar"
-              disabled={carregando}>
+              disabled={carregando}
+            >
               {carregando ? "Enviando..." : "Solicitar Contratação"}
             </button>
           </form>
