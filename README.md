@@ -1,4 +1,4 @@
-# BuildUp Frontend 🚧
+# BuildUp Frontend 
 
 Aplicação web da plataforma **BuildUp**, responsável pela interface dos usuários para busca de profissionais, orçamento e interação com IA.
 
