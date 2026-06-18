@@ -183,7 +183,7 @@ export default function Simulador() {
                   </p>
                 </div>
                 <Link to="/profissionais" className="btn-profissionais">
-                  Encontrar profissionais para esta obra
+                  Encontrar profissionais 
                 </Link>
               </>
             ) : (
