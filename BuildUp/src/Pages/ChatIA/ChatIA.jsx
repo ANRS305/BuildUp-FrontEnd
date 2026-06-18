@@ -65,14 +65,11 @@ export default function ChatIA() {
   return (
     <>
       <Header />
-
       <section className="chatia">
         <div className="chatia-header">
           <h1>Chat BuildUp IA</h1>
-
           <p>Tire dúvidas sobre a BuildUp, construção e orçamento.</p>
         </div>
-
         <div className="chat-container">
           <div className="chat-mensagens">
             {chat.map((msg, index) => (
@@ -80,10 +77,8 @@ export default function ChatIA() {
                 {msg.texto}
               </div>
             ))}
-
             {carregando && <div className="mensagem ia">Digitando...</div>}
           </div>
-
           <div className="chat-input">
             <input
               type="text"
@@ -94,16 +89,13 @@ export default function ChatIA() {
                 if (e.key === "Enter") {
                   enviarMensagem();
                 }
-              }}
-            />
-
+              }}/>
             <button onClick={enviarMensagem} disabled={carregando}>
               Enviar
             </button>
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );

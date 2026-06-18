@@ -87,17 +87,15 @@ export default function Simulador() {
             construção.
           </p>
         </div>
-
         <div className="simulador-grid">
-          {/* ESQUERDA */}
+          {/*Lado esquerdo*/}
           <div className="coluna-esquerda">
             <div className="form-card">
               <h2>Informações da obra</h2>
               <label>Tipo de obra</label>
               <select
                 value={tipoObra}
-                onChange={(e) => setTipoObra(e.target.value)}
-              >
+                onChange={(e) => setTipoObra(e.target.value)}>
                 <option value="">Selecione o tipo da obra</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamento">Apartamento</option>
@@ -112,22 +110,19 @@ export default function Simulador() {
                 type="number"
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
-                placeholder="Ex: 120"
-              />
+                placeholder="Ex: 120"/>
               <label>Quantidade de quartos</label>
               <input
                 type="number"
                 value={quartos}
                 onChange={(e) => setQuartos(e.target.value)}
-                placeholder="Ex: 3"
-              />
+                placeholder="Ex: 3"/>
               <label>Quantidade de banheiros</label>
               <input
                 type="number"
                 value={banheiros}
                 onChange={(e) => setBanheiros(e.target.value)}
-                placeholder="Ex: 2"
-              />
+                placeholder="Ex: 2"/>
               <button className="btn-calcular" onClick={calcular}>
                 Calcular estimativa
               </button>
@@ -142,15 +137,13 @@ export default function Simulador() {
                 </p>
                 <button
                   className="btn-chat-ia"
-                  onClick={() => navigate("/chatia")}
-                >
+                  onClick={() => navigate("/chatia")}>
                   Abrir Chat IA
                 </button>
               </div>
             )}
           </div>
-
-          {/* DIREITA */}
+          {/*Lado direito*/}
           <div className="resultado-card">
             <h2>Resumo da estimativa</h2>
             {resultado ? (
@@ -196,7 +189,6 @@ export default function Simulador() {
         </div>
       </section>
       <Footer />
-      {/* MODAL */}
       <Modal
         aberto={modal.aberto}
         titulo={modal.titulo}

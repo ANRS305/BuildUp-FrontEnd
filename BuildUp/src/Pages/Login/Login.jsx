@@ -59,25 +59,19 @@ export default function Entrar() {
       <section className="login">
         <div className="login-card">
           <h1>Entrar</h1>
-
           <p>Entre na sua conta para continuar.</p>
-
           <form className="login-form" onSubmit={fazerLogin}>
             <div className="input-group">
               <label>Email</label>
-
               <input
                 type="text"
                 placeholder="Digite seu email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
             <div className="input-group">
               <label>Senha</label>
-
               <div className="senha-container">
                 <input
                   type={mostrarSenha ? "text" : "password"}
@@ -85,19 +79,15 @@ export default function Entrar() {
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                   required
-                  minLength={6}
-                />
-
+                  minLength={6}/>
                 <button
                   type="button"
                   className="btn-senha"
-                  onClick={() => setMostrarSenha(!mostrarSenha)}
-                >
+                  onClick={() => setMostrarSenha(!mostrarSenha)}>
                   {mostrarSenha ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </button>
               </div>
             </div>
-
             <button type="submit" className="btn-entrar" disabled={carregando}>
               {carregando ? "Entrando..." : "Entrar"}
             </button>
@@ -105,7 +95,6 @@ export default function Entrar() {
         </div>
       </section>
       <Footer />
-
       <Modal
         aberto={modalAberto}
         titulo={modalTitulo}

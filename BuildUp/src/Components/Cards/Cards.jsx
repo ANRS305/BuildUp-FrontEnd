@@ -13,7 +13,6 @@ import {
 export default function Cards() {
 
     useEffect(() => {
-
         const hiddenElements = document.querySelectorAll(".hidden");
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -28,16 +27,15 @@ export default function Cards() {
 
     return (
         <section className="cards">
-            {/* COMO FUNCIONA */}
             <div className="cards-header hidden">
                 <h2>Como funciona o simulador</h2>
                 <p>
                     É rápido, simples e inteligente
                 </p>
             </div>
-            {/* CARDS */}
+            {/* Cards */}
             <div className="cards-container">
-                {/* CARD 1 */}
+                {/* Card 1 */}
                 <div className="card hidden">
                     <div className="card-icon">
                         <HiOutlineClipboardDocumentList />
@@ -52,11 +50,11 @@ export default function Cards() {
                         </p>
                     </div>
                 </div>
-                {/* SETA */}
+                {/* Seta */}
                 <div className="arrow hidden">
                     <FaArrowRight />
                 </div>
-                {/* CARD 2 */}
+                {/* Card 2 */}
                 <div className="card hidden">
                     <div className="card-icon">
                         <HiOutlineCalculator />
@@ -71,11 +69,11 @@ export default function Cards() {
                         </p>
                     </div>
                 </div>
-                {/* SETA */}
+                {/* Seta */}
                 <div className="arrow hidden">
                     <FaArrowRight />
                 </div>
-                {/* CARD 3 */}
+                {/* Card 3 */}
                 <div className="card hidden">
                     <div className="card-icon">
                         <HiOutlineDocumentMagnifyingGlass />
@@ -91,7 +89,7 @@ export default function Cards() {
                     </div>
                 </div>
             </div>
-            {/* BENEFÍCIOS */}
+            {/*Benefícios*/}
             <div className="benefits">
                 <div className="benefits-header hidden">
                     <h2>
@@ -103,7 +101,7 @@ export default function Cards() {
                     </p>
                 </div>
                 <div className="benefits-container">
-                    {/* BENEFÍCIO 1 */}
+                    {/* Benefício 1 */}
                     <div className="benefit-card hidden">
                         <div className="benefit-icon">
                             <HiOutlineCurrencyDollar />
@@ -116,8 +114,7 @@ export default function Cards() {
                             opções para economizar na obra.
                         </p>
                     </div>
-
-                    {/* BENEFÍCIO 2 */}
+                    {/* Benefício 2 */}
                     <div className="benefit-card hidden">
                         <div className="benefit-icon">
                             <HiOutlineShieldCheck />
@@ -130,7 +127,7 @@ export default function Cards() {
                             e recomendados pela plataforma.
                         </p>
                     </div>
-                    {/* BENEFÍCIO 3 */}
+                    {/* Benefício 3 */}
                     <div className="benefit-card hidden">
                         <div className="benefit-icon">
                             <HiOutlineSparkles />

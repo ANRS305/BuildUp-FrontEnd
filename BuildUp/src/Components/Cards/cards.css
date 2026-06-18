@@ -21,7 +21,6 @@
     color: #64748B;
 }
 
-/* CONTAINER */
 .cards-container {
     display: flex;
     align-items: center;
@@ -31,7 +30,7 @@
     margin-bottom: 120px;
 }
 
-/* CARD */
+/* Card */
 .card {
     width: 330px;
     min-height: 150px;
@@ -50,7 +49,7 @@
     box-shadow: 0 12px 25px rgba(0,0,0,0.08);
 }
 
-/* ÍCONE */
+/* Ícone */
 .card-icon {
     min-width: 60px;
     min-height: 60px;
@@ -63,7 +62,7 @@
     color: #2563EB;
 }
 
-/* TEXTO */
+/* txt */
 .card-text h3 {
     font-size: 19px;
     color: #0F172A;
@@ -76,13 +75,13 @@
     color: #64748B;
 }
 
-/* SETA */
+/* Seta */
 .arrow {
     font-size: 20px;
     color: #2563EB;
 }
 
-/* BENEFÍCIOS */
+/* Benefícios */
 .benefits {
     width: 100%;
 }
@@ -103,7 +102,6 @@
     color: #64748B;
 }
 
-/* BENEFITS CONTAINER */
 .benefits-container {
     display: flex;
     justify-content: center;
@@ -111,7 +109,6 @@
     flex-wrap: wrap;
 }
 
-/* BENEFIT CARD */
 .benefit-card {
     width: 340px;
     background-color: white;
@@ -127,7 +124,6 @@
     box-shadow: 0 12px 25px rgba(0,0,0,0.08);
 }
 
-/* BENEFIT ICON */
 .benefit-icon {
     width: 75px;
     height: 75px;
@@ -142,7 +138,6 @@
     color: #2563EB;
 }
 
-/* BENEFIT TEXT */
 .benefit-card h3 {
     font-size: 22px;
     color: #0F172A;
@@ -155,7 +150,6 @@
     color: #64748B;
 }
 
-/* ANIMAÇÃO */
 .hidden {
     opacity: 0;
     filter: blur(5px);

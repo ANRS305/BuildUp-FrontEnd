@@ -8,7 +8,7 @@
     padding-inline: 7%;
 }
 
-/*Img*/
+/* IMAGEM */
 .banner-background {
     position: absolute;
     inset: 0;
@@ -21,6 +21,7 @@
     display: block;
 }
 
+/* OVERLAY */
 .banner-overlay {
     position: absolute;
     inset: 0;
@@ -28,6 +29,7 @@
     z-index: 2;
 }
 
+/* CONTEÚDO */
 .banner-content {
     position: relative;
     z-index: 3;
@@ -37,7 +39,7 @@
     margin-top: 80px;
 }
 
-/*Título*/
+/* TÍTULO */
 .banner-content h1 {
     font-size: 75px;
     line-height: 85px;
@@ -49,7 +51,7 @@
     color: #FF7A00;
 }
 
-/*txt*/
+/* TEXTO */
 .banner-content p {
     font-size: 21px;
     line-height: 35px;
@@ -57,12 +59,14 @@
     color: #f3f4f6;
 }
 
+/* BOTÕES */
 .banner-buttons {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
 }
 
+/* BOTÕES */
 .btn-orange,
 .btn-dark {
     min-width: 220px;
@@ -121,8 +125,8 @@
 }
 
 .btn-chat {
-    width: 57px;
-    height: 59px;
+    width: 60px;
+    height: 0px;
     border: none;
     border-radius: 18px;
     background: linear-gradient(

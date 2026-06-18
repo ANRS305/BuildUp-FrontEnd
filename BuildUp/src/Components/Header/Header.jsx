@@ -5,7 +5,6 @@ import api from "../../services/api";
 
 export default function Header() {
   const navigate = useNavigate();
-
   const [usuario, setUsuario] = useState(() => {
     const token = localStorage.getItem("token");
     const usuarioSalvo = localStorage.getItem("usuario");
@@ -49,14 +48,12 @@ export default function Header() {
             <span className="up">Up</span>
           </h1>
         </div>
-
         <nav className="menu">
           <Link to="/">Home</Link>
           <Link to="/Profissionais">Profissionais</Link>
           <Link to="/Obra">Simulador</Link>
           <Link to="/ChatIA">Chat IA</Link>
         </nav>
-
         <div className="header-buttons">
           {usuario ? (
             <>
@@ -73,7 +70,6 @@ export default function Header() {
               <Link to="/login" className="btn-login">
                 Entrar
               </Link>
-
               <Link to="/cadastrar">
                 <button type="button" className="btn-register">
                   Cadastrar

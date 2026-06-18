@@ -5,7 +5,6 @@
     padding: 140px 7% 80px;
 }
 
-/* HEADER */
 .profissionais-header {
     margin-bottom: 40px;
 }
@@ -21,7 +20,7 @@
     font-size: 18px;
 }
 
-/* FILTROS */
+/*Filtros*/
 .filtros {
     display: flex;
     gap: 15px;
@@ -62,14 +61,14 @@
     font-size: 14px;
 }
 
-/* CONTEÚDO */
+/*Conteúdo*/
 .conteudo-profissionais {
     display: grid;
     grid-template-columns: 260px 1fr;
     gap: 25px;
 }
 
-/* CATEGORIAS */
+/*Categorias*/
 .categorias {
     background-color: white;
     border-radius: 20px;
@@ -101,14 +100,13 @@
     color: #2563EB;
 }
 
-/* LISTA */
 .lista-profissionais {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* CARD */
+/*Card*/
 .profissional-card {
     background-color: white;
     border-radius: 20px;
@@ -131,7 +129,7 @@
     object-fit: cover;
 }
 
-/* INFO */
+/*Infos*/
 .profissional-info {
     flex: 1;
 }
@@ -159,7 +157,6 @@
     color: #64748B;
 }
 
-/* TAGS */
 .tags {
     display: flex;
     gap: 8px;
@@ -176,7 +173,7 @@
     font-weight: 600;
 }
 
-/* PREÇO */
+/*Preço*/
 .profissional-preco {
     text-align: right;
 }

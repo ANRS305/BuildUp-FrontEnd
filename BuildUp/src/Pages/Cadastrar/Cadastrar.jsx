@@ -67,54 +67,38 @@ export default function Cadastro() {
       <section className="cadastro">
         <div className="cadastro-card">
           <h1>Criar conta</h1>
-
           <p>Crie sua conta e comece a planejar sua obra.</p>
-
           <form className="cadastro-form" onSubmit={fazerCadastro}>
-            {/* NOME */}
             <div className="input-group">
               <label>Nome completo</label>
-
               <input
                 type="text"
                 placeholder="Digite seu nome"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
-            {/* EMAIL */}
             <div className="input-group">
               <label>E-mail</label>
-
               <input
                 type="email"
                 placeholder="Digite seu e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
-            {/* TELEFONE */}
             <div className="input-group">
               <label>Telefone</label>
-
               <input
                 type="tel"
                 placeholder="(11) 99999-9999"
                 value={telefone}
                 onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ""))}
                 maxLength={11}
-                required
-              />
+                required/>
             </div>
-
-            {/* SENHA */}
             <div className="input-group">
               <label>Senha</label>
-
               <div className="senha-container">
                 <input
                   type={mostrarSenha ? "text" : "password"}
@@ -122,32 +106,25 @@ export default function Cadastro() {
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                   required
-                  minLength={6}
-                />
-
+                  minLength={6}/>
                 <button
                   type="button"
                   className="btn-senha"
-                  onClick={() => setMostrarSenha(!mostrarSenha)}
-                >
+                  onClick={() => setMostrarSenha(!mostrarSenha)}>
                   {mostrarSenha ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </button>
               </div>
             </div>
-
-            {/* BOTÃO */}
             <button
               type="submit"
               className="btn-cadastrar"
-              disabled={carregando}
-            >
+              disabled={carregando}>
               {carregando ? "Criando conta..." : "Criar conta"}
             </button>
           </form>
         </div>
       </section>
       <Footer />
-
       <Modal
         aberto={modalAberto}
         titulo={modalTitulo}

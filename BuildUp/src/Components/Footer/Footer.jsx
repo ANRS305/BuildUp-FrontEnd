@@ -10,7 +10,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer-container">
-                {/* LOGO / DESCRIÇÃO */}
+                {/*Logo e a descrição*/}
                 <div className="footer-brand">
                     <h2>
                         Build<span>Up</span>
@@ -20,7 +20,6 @@ export default function Footer() {
                         e profissionais da construção civil com
                         planejamento moderno e economia real.
                     </p>
-                    {/* REDES */}
                     <div className="footer-social">
                         <a href="https://www.instagram.com/">
                             <FaInstagram />
@@ -33,7 +32,6 @@ export default function Footer() {
                         </a>
                     </div>
                 </div>
-                {/* LINKS */}
                 <div className="footer-links">
                     <div className="footer-column">
                         <h3>Plataforma</h3>

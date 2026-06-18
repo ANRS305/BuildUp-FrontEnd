@@ -68,7 +68,6 @@ export default function Historico({ onSelecionarOrcamento }) {
             () => excluirOrcamento(id)
         );
     }
-
     async function excluirOrcamento(id) {
         try {
             await axios.delete(
@@ -84,7 +83,6 @@ export default function Historico({ onSelecionarOrcamento }) {
             abrirModal("Erro", "Não foi possível excluir o orçamento.");
         }
     }
-
     if (carregando) {
         return (
             <div className="historico-card">
@@ -122,14 +120,12 @@ export default function Historico({ onSelecionarOrcamento }) {
                                 <div className="historico-botoes">
                                     <button
                                         className="btn-ver"
-                                        onClick={() => visualizarOrcamento(item)}
-                                    >
+                                        onClick={() => visualizarOrcamento(item)}>
                                         Ver
                                     </button>
                                     <button
                                         className="btn-excluir"
-                                        onClick={() => confirmarExclusao(item.id_Orcamento)}
-                                    >
+                                        onClick={() => confirmarExclusao(item.id_Orcamento)}>
                                         Excluir
                                     </button>
                                 </div>

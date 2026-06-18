@@ -107,77 +107,59 @@ export default function Contratar() {
   return (
     <>
       <Header />
-
       <section className="cadastro">
         <div className="cadastro-card">
           <h1>Fazer contratação</h1>
-
           <p>
             Preencha as informações abaixo para enviar sua solicitação ao
             profissional.
           </p>
-
           <form className="cadastro-form" onSubmit={enviarContratacao}>
             <div className="input-group">
               <label>Data de Início</label>
-
               <input
                 type="date"
                 value={dataInicio}
                 onChange={(e) => setDataInicio(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
             <div className="input-group">
               <label>Data Prevista para Conclusão</label>
-
               <input
                 type="date"
                 value={dataConclusao}
                 onChange={(e) => setDataConclusao(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
             <div className="input-group">
               <label>Orçamento Disponível</label>
-
               <input
                 type="number"
                 step="0.01"
                 placeholder="R$ 0,00"
                 value={valorCombinado}
                 onChange={(e) => setValorCombinado(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
             <div className="input-group">
               <label>Descrição do Serviço</label>
-
               <textarea
                 placeholder="Descreva detalhadamente o serviço que deseja realizar..."
                 rows="5"
                 value={descricaoServico}
                 onChange={(e) => setDescricaoServico(e.target.value)}
-                required
-              />
+                required/>
             </div>
-
             <button
               type="submit"
               className="btn-cadastrar"
-              disabled={carregando}
-            >
+              disabled={carregando}>
               {carregando ? "Enviando..." : "Solicitar Contratação"}
             </button>
           </form>
         </div>
       </section>
-
       <Footer />
-
       <Modal
         aberto={modalAberto}
         titulo={modalTitulo}

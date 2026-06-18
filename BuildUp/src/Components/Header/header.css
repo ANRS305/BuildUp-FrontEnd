@@ -37,7 +37,7 @@ body,
     flex-wrap: wrap;
 }
 
-/* LOGO */
+/*Logo*/
 .logo h1 {
     font-size: 34px;
     font-weight: 800;
@@ -52,7 +52,7 @@ body,
     color: #F97316;
 }
 
-/* MENU */
+/*Menu*/
 .menu {
     display: flex;
     align-items: center;
@@ -74,7 +74,6 @@ body,
     color: #F97316;
 }
 
-/* BOTÕES */
 .header-buttons {
     display: flex;
     align-items: center;
@@ -95,7 +94,7 @@ body,
     white-space: nowrap;
 }
 
-/* LOGIN */
+/*Entrar*/
 .btn-login {
     border: 1px solid #D9D9D9;
     background-color: white;
@@ -110,7 +109,7 @@ body,
     background-color: #F5F5F5;
 }
 
-/* REGISTER */
+/*Cadastrar*/
 .btn-register {
     border: none;
     background: linear-gradient(90deg, #F97316, #FF9A3D);

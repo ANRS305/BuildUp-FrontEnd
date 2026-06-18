@@ -1,5 +1,6 @@
 import "./Banner.css";
 import { useEffect, useState } from "react";
+import { FaComments } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bg1 from "../../../../src/assets/1.png";
 import bg2 from "../../../../src/assets/2.png";
@@ -23,7 +24,7 @@ export default function Banner() {
     }, []);
     return (
         <section className="banner">
-            {/* IMAGEM DE FUNDO */}
+            {/*Img Fundo*/}
             <img
                 src={imagens[imagemAtual]}
                 alt=""
@@ -41,13 +42,19 @@ export default function Banner() {
                     da sua construção ou reforma.
                 </p>
                 <div className="banner-buttons">
-                    {/* BOTÃO SIMULADOR */}
+                    {/*Botão Simulador*/}
                     <Link to="/Obra" className="btn-orange">
                         Simular minha obra
                     </Link>
-                    {/* BOTÃO PROFISSIONAIS */}
+                    {/*Botão Profissionais*/}
                     <Link to="/profissionais" className="btn-dark">
                         Encontrar profissionais
+                    </Link>
+                    {/*Botão Chat IA*/}
+                    <Link to="/chatia">
+                        <button className="btn-chat">
+                            <FaComments />
+                        </button>
                     </Link>
                 </div>
             </div>

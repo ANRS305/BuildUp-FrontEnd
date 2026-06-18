@@ -19,15 +19,12 @@ export default function Modal({
                         <>
                             <button
                                 className="btn-modal cancelar"
-                                onClick={onFechar}
-                            >
+                                onClick={onFechar}>
                                 Cancelar
                             </button>
-
                             <button
                                 className="btn-modal confirmar"
-                                onClick={onConfirmar}
-                            >
+                                onClick={onConfirmar}>
                                 Confirmar
                             </button>
                         </>

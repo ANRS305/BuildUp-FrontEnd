@@ -49,22 +49,18 @@ export default function Profissionais() {
 
     const matchEstado =
       estadoSelecionado === "Todos" || p.estado === estadoSelecionado;
-
     const matchDisponivel = p.disponivel === true;
-
     return matchCategoria && matchBusca && matchEstado && matchDisponivel;
   });
 
   return (
     <>
       <Header />
-
       <section className="profissionais">
         <div className="profissionais-header">
           <h1>Encontre o profissional ideal</h1>
           <p>Compare avaliações, preços e especialidades.</p>
         </div>
-
         <div className="filtros">
           <div className="pesquisa">
             <HiOutlineMagnifyingGlass />
@@ -72,14 +68,11 @@ export default function Profissionais() {
               type="text"
               placeholder="Buscar profissional..."
               value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-            />
+              onChange={(e) => setBusca(e.target.value)}/>
           </div>
-
           <select
             value={estadoSelecionado}
-            onChange={(e) => setEstadoSelecionado(e.target.value)}
-          >
+            onChange={(e) => setEstadoSelecionado(e.target.value)}>
             <option value="Todos">Todos os estados</option>
             {estados.map((estado) => (
               <option key={estado} value={estado}>
@@ -91,7 +84,6 @@ export default function Profissionais() {
         <div className="conteudo-profissionais">
           <aside className="categorias">
             <h3>Categorias</h3>
-
             {[
               "Todos",
               "Pedreiro",
@@ -103,29 +95,23 @@ export default function Profissionais() {
               <button
                 key={item}
                 className={categoria === item ? "active" : ""}
-                onClick={() => setCategoria(item)}
-              >
+                onClick={() => setCategoria(item)}>
                 {item}
               </button>
             ))}
           </aside>
-
           <div className="lista-profissionais">
             {loading && <p>Carregando profissionais...</p>}
-
             {erro && <p className="erro">{erro}</p>}
-
             {!loading && !erro && filtrados.length === 0 && (
               <p>Nenhum profissional encontrado.</p>
             )}
-
             {!loading &&
               !erro &&
               filtrados.map((p, index) => (
                 <div
                   key={p.id_Profissional || index}
-                  className="profissional-card"
-                >
+                  className="profissional-card">
                   <img src={p.foto_Perfil} alt={p.nome} />
                   <div className="profissional-info">
                     <h2>{p.nome}</h2>
@@ -141,7 +127,6 @@ export default function Profissionais() {
                   </div>
                   <div className="profissional-preco">
                     <h3>R$ {p.valor_Diaria} a diária</h3>
-
                     <button
                       onClick={() => {
                         const usuarioLogado = localStorage.getItem("usuario");
@@ -155,8 +140,7 @@ export default function Profissionais() {
                             profissionalId: p.id_Profissional,
                           },
                         });
-                      }}
-                    >
+                      }}>
                       Contratar
                     </button>
                   </div>
