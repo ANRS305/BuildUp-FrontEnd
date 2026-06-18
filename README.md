@@ -13,7 +13,6 @@ Aplicação web da plataforma **BuildUp**, responsável pela interface dos usuá
 ## Funcionalidades
 
 * Busca de profissionais;
-* Comparação de valores;
 * Simulador de obras;
 * Integração com backend;
 * Assistente inteligente com IA.
