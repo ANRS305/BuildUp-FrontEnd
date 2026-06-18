@@ -1,4 +1,4 @@
-import "../Simulador/simulador.css";
+import "./simulador.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Historico from "../../Components/HistoricoOrcamentos/Historico";
@@ -95,7 +95,8 @@ export default function Simulador() {
               <label>Tipo de obra</label>
               <select
                 value={tipoObra}
-                onChange={(e) => setTipoObra(e.target.value)}>
+                onChange={(e) => setTipoObra(e.target.value)}
+              >
                 <option value="">Selecione o tipo da obra</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamento">Apartamento</option>
@@ -110,19 +111,22 @@ export default function Simulador() {
                 type="number"
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
-                placeholder="Ex: 120"/>
+                placeholder="Ex: 120"
+              />
               <label>Quantidade de quartos</label>
               <input
                 type="number"
                 value={quartos}
                 onChange={(e) => setQuartos(e.target.value)}
-                placeholder="Ex: 3"/>
+                placeholder="Ex: 3"
+              />
               <label>Quantidade de banheiros</label>
               <input
                 type="number"
                 value={banheiros}
                 onChange={(e) => setBanheiros(e.target.value)}
-                placeholder="Ex: 2"/>
+                placeholder="Ex: 2"
+              />
               <button className="btn-calcular" onClick={calcular}>
                 Calcular estimativa
               </button>
@@ -137,7 +141,8 @@ export default function Simulador() {
                 </p>
                 <button
                   className="btn-chat-ia"
-                  onClick={() => navigate("/chatia")}>
+                  onClick={() => navigate("/chatia")}
+                >
                   Abrir Chat IA
                 </button>
               </div>
@@ -176,7 +181,7 @@ export default function Simulador() {
                   </p>
                 </div>
                 <Link to="/profissionais" className="btn-profissionais">
-                  Encontrar profissionais 
+                  Encontrar profissionais
                 </Link>
               </>
             ) : (

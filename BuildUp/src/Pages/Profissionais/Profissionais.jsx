@@ -1,4 +1,4 @@
-import "./Profissionais.css";
+import "./profissionais.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useEffect, useState } from "react";
@@ -68,11 +68,13 @@ export default function Profissionais() {
               type="text"
               placeholder="Buscar profissional..."
               value={busca}
-              onChange={(e) => setBusca(e.target.value)}/>
+              onChange={(e) => setBusca(e.target.value)}
+            />
           </div>
           <select
             value={estadoSelecionado}
-            onChange={(e) => setEstadoSelecionado(e.target.value)}>
+            onChange={(e) => setEstadoSelecionado(e.target.value)}
+          >
             <option value="Todos">Todos os estados</option>
             {estados.map((estado) => (
               <option key={estado} value={estado}>
@@ -95,7 +97,8 @@ export default function Profissionais() {
               <button
                 key={item}
                 className={categoria === item ? "active" : ""}
-                onClick={() => setCategoria(item)}>
+                onClick={() => setCategoria(item)}
+              >
                 {item}
               </button>
             ))}
@@ -111,7 +114,8 @@ export default function Profissionais() {
               filtrados.map((p, index) => (
                 <div
                   key={p.id_Profissional || index}
-                  className="profissional-card">
+                  className="profissional-card"
+                >
                   <img src={p.foto_Perfil} alt={p.nome} />
                   <div className="profissional-info">
                     <h2>{p.nome}</h2>
@@ -140,7 +144,8 @@ export default function Profissionais() {
                             profissionalId: p.id_Profissional,
                           },
                         });
-                      }}>
+                      }}
+                    >
                       Contratar
                     </button>
                   </div>

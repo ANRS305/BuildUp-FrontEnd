@@ -1,6 +1,6 @@
 import "./login.css";
 import api from "../../services/api";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../Components/Modal/Modal";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -68,7 +68,8 @@ export default function Entrar() {
                 placeholder="Digite seu email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required/>
+                required
+              />
             </div>
             <div className="input-group">
               <label>Senha</label>
@@ -79,11 +80,13 @@ export default function Entrar() {
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                   required
-                  minLength={6}/>
+                  minLength={6}
+                />
                 <button
                   type="button"
                   className="btn-senha"
-                  onClick={() => setMostrarSenha(!mostrarSenha)}>
+                  onClick={() => setMostrarSenha(!mostrarSenha)}
+                >
                   {mostrarSenha ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </button>
               </div>
