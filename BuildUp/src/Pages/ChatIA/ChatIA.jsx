@@ -70,7 +70,7 @@ export default function ChatIA() {
         <div className="chatia-header">
           <h1>Chat BuildUp IA</h1>
 
-          <p>Tire dúvidas sobre construção, materiais, orçamento e reformas.</p>
+          <p>Tire dúvidas sobre a BuildUp, construção e orçamento.</p>
         </div>
 
         <div className="chat-container">

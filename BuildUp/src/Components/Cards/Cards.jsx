@@ -30,7 +30,7 @@ export default function Cards() {
         <section className="cards">
             {/* COMO FUNCIONA */}
             <div className="cards-header hidden">
-                <h2>Como funciona</h2>
+                <h2>Como funciona o simulador</h2>
                 <p>
                     É rápido, simples e inteligente
                 </p>
@@ -47,8 +47,8 @@ export default function Cards() {
                             1. Descreva sua obra
                         </h3>
                         <p>
-                            Informe as medidas, tipo de obra
-                            e quantidade de quartos e banheiros.
+                            Informe as medidas, tipo de obra,
+                            quantidade de quartos e banheiros.
                         </p>
                     </div>
                 </div>
@@ -63,11 +63,11 @@ export default function Cards() {
                     </div>
                     <div className="card-text">
                         <h3>
-                            2. IA calcula tudo
+                            2. Calculadora 
                         </h3>
                         <p>
-                            Nossa inteligência artificial calcula
-                            os materiais e estima os custos.
+                            Calcula os materiais e estima os 
+                            valores da sua obra de forma rápida.
                         </p>
                     </div>
                 </div>
