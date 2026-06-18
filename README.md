@@ -5,7 +5,7 @@ Aplicação web da plataforma **BuildUp**, responsável pela interface dos usuá
 ## Tecnologias
 
 * React.js
-* JavaScript/TypeScript
+* JavaScript
 * CSS
 * Axios
 * Vercel
