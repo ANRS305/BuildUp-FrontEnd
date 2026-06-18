@@ -30,7 +30,6 @@
 }
 
 .pesquisa {
-    flex: 1;
     min-width: 280px;
     height: 55px;
     background-color: white;
@@ -247,13 +246,20 @@
 
     .filtros {
         flex-direction: column;
+        width: 100%;
     }
-}
 
-@media (min-width: 300px) {
     .pesquisa {
-        width: 100%;        
-        height: 140px;
-        font-size: 40px;
+        width: 100%;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .pesquisa input {
+        width: 100%;
+    }
+
+    .filtros select {
+        width: 100%;
     }
 }
